@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Банбу</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles/mainmenu-style.css') }}">
+</head>
+<body>
+	<div class="left-panel">
+		<h1 class="left-panel-title">Боковое меню</h1>
+		<a class="left-panel-button" href="{{ url_for('bangboo_stats.list_bangboo') }}">Банбу</a>
+	</div>
+	<div class="main-panel">
+		<h1 class="main-panel-title">Банбу</h1>
+		<h1 class="main-panel-second-title">Введите в поля "Уровень" и "Количество" данные, соответствующие вашему прогрессу и нажмите "Сохранить". Один банбу за раз.</h1>
+		<div class="main-container">
+			{% for b in bangboo %}
+				<form class="main-card" method="POST" action="/bangboo_stats/update">
+					<input type="hidden" name="bangboo_id" value="{{ b.bangboo_id }}">
+					<img src="{{ url_for('static', filename='images/bangboo/' + b.bangboo_image_url) }}">
+					<label style="border-bottom: 2px solid black; width: 80%; text-align: center; margin: 0 0 0 0;">{{ b.bangboo_name }}</label>
+					<table style="border-bottom: 2px solid black;">
+						<tr>
+							<td style="color: maroon;">Класс:</td>
+							<td style="text-align: right;">{{  b.bangboo_class }}{{  b.bangboo_class }}</td>
+						</tr>
+						<tr>
+							<td style="color: maroon;">Уровень:</td>
+							<td style="text-align: right;"><input type="text" id="bangboo_level" name="bangboo_level" class="text-field" value="{{ b.bangboo_level }}"></td>
+						</tr>
+						<tr>
+							<td style="color: maroon;">Количество:</td>
+							<td style="text-align: right;"><input type="text" id="bangboo_stars" name="bangboo_stars" class="text-field" value="{{ b.bangboo_stars }}"></td>
+						</tr>
+						
+					</table>
+					<input type="submit" value="Сохранить" class="save-button">
+				</form>
+			{% endfor %}
+		</div>
+	</div>
+</body>
