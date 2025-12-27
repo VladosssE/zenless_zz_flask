@@ -7,8 +7,9 @@
 	<link rel="stylesheet" href="{{ url_for('static', filename='styles/mainmenu-style.css') }}">
 </head>
 <body>
-	<div class="left-panel" style="height: 100vh;">
+	<div class="left-panel">
 		<h1 class="left-panel-title">Боковое меню</h1>
 		<a class="left-panel-button" href="{{ url_for('bangboo_stats.list_bangboo') }}">Банбу</a>
+		<a class="left-panel-button" href="{{ url_for('characters_stats.list_characters') }}">Персонажи</a>
 	</div>
 </body>

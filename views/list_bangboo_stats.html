@@ -4,38 +4,53 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Банбу</title>
-	<link rel="stylesheet" href="{{ url_for('static', filename='styles/mainmenu-style.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles/bangboo-stats-style.css') }}">
 </head>
 <body>
-	<div class="left-panel">
-		<h1 class="left-panel-title">Боковое меню</h1>
-		<a class="left-panel-button" href="{{ url_for('bangboo_stats.list_bangboo') }}">Банбу</a>
-	</div>
 	<div class="main-panel">
+		<a class="exit-button" href="{{ url_for('index') }}">В главное меню</a>
 		<h1 class="main-panel-title">Банбу</h1>
 		<h1 class="main-panel-second-title">Введите в поля "Уровень" и "Количество" данные, соответствующие вашему прогрессу и нажмите "Сохранить". Один банбу за раз.</h1>
-		<div class="main-container">
+		
+		<div class="main-bangboo-container">
 			{% for b in bangboo %}
-				<form class="main-card" method="POST" action="/bangboo_stats/update">
+				<form class="main-bangboo-card" method="POST" action="/bangboo_stats/update">
 					<input type="hidden" name="bangboo_id" value="{{ b.bangboo_id }}">
-					<img src="{{ url_for('static', filename='images/bangboo/' + b.bangboo_image_url) }}">
-					<label style="border-bottom: 2px solid black; width: 80%; text-align: center; margin: 0 0 0 0;">{{ b.bangboo_name }}</label>
-					<table style="border-bottom: 2px solid black;">
-						<tr>
-							<td style="color: maroon;">Класс:</td>
-							<td style="text-align: right;">{{  b.bangboo_class }}{{  b.bangboo_class }}</td>
-						</tr>
-						<tr>
-							<td style="color: maroon;">Уровень:</td>
-							<td style="text-align: right;"><input type="text" id="bangboo_level" name="bangboo_level" class="text-field" value="{{ b.bangboo_level }}"></td>
-						</tr>
-						<tr>
-							<td style="color: maroon;">Количество:</td>
-							<td style="text-align: right;"><input type="text" id="bangboo_stars" name="bangboo_stars" class="text-field" value="{{ b.bangboo_stars }}"></td>
-						</tr>
-						
-					</table>
-					<input type="submit" value="Сохранить" class="save-button">
+					<div class="image-container">
+						<img class="bangboo-images" src="{{ url_for('static', filename='images/bangboo/' + b.bangboo_image_url) }}">
+					</div>
+					<div class="bangboo-content">
+						<div class="bangboo-name">{{ b.bangboo_name }}</div>
+						<div class="row">
+							<span style="color: maroon; margin: 0 0 0 10px;">Класс:</span>
+							<span class="bangboo-combo-box">{{ b.bangboo_class }}</span>
+						</div>
+						<div class="row">
+							<span style="color: maroon; margin: 0 0 0 10px;">Уровень:</span>
+							<div>
+								<select name="bangboo_level" class="bangboo-combo-box">
+									{% for i in range(0, 61) %}
+										<option value="{{ i }}" {% if b.bangboo_level == i %}selected{% endif %}>
+											{{ i }}
+										</option>
+									{% endfor %}
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<span style="color: maroon; margin: 0 0 0 10px;">Звёзд:</span>
+							<div>
+								<select name="bangboo_stars" class="bangboo-combo-box">
+									{% for i in range(0, 7) %}
+										<option value="{{ i }}" {% if b.bangboo_stars == i %}selected{% endif %}>
+											{{ i }}
+										</option>
+									{% endfor %}
+								</select>
+							</div>
+						</div>
+						<input type="submit" value="Сохранить" class="save-button">
+					</div>
 				</form>
 			{% endfor %}
 		</div>

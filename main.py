@@ -1,7 +1,8 @@
 from flask import Flask, render_template, session
-from models.tables import db, Bangboo_stats
+from models.tables import db, Bangboo_stats, Characters_stats
 from controllers.bangboo_stats_controller import bp as bangboo_stats_bp
-from models.seed import seed_bangboo
+from controllers.characters_stats_controller import bp as characters_stats_bp
+from models.seed import seed_bangboo, seed_characters
 
 def create_app():
     app = Flask(__name__, template_folder="views", static_folder="static")
@@ -13,9 +14,11 @@ def create_app():
     with app.app_context():
         db.create_all()
         seed_bangboo()
+        seed_characters()
         
     app.register_blueprint(bangboo_stats_bp)
-
+    app.register_blueprint(characters_stats_bp)
+    
     @app.route("/")
     def index():
         main = db.session.query(Bangboo_stats).all()
