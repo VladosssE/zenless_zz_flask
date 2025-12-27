@@ -20,6 +20,7 @@
 2. Клонируйте репозиторий и перейдите к нему
 - `git clone https://github.com/VladosssE/zenless_zz_flask.git`
 - `cd zenless_zz_flask`
+- Без Git: На главной странице репозитория нажмите Code > Download ZIP и распакуйте проект в любой каталог
 
 3. Создайте виртуальное окружение
 - `python -m venv env`
