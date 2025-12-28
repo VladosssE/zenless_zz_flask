@@ -33,7 +33,7 @@ class Characters_stats(db.Model):
     character_disk_4 = db.Column(db.Integer)
     character_disk_5 = db.Column(db.Integer)
     character_disk_6 = db.Column(db.Integer)
-    character_amplificator_unique = db.Column(db.Integer)
+    character_amplificator_unique = db.Column(db.String(3))
     character_amplificator_level = db.Column(db.Integer)
     character_amplificator_stars = db.Column(db.Integer)
     character_image_url = db.Column(db.String(100))
