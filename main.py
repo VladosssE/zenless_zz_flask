@@ -3,7 +3,7 @@ from extensions import db
 from models.tables import Bangboo_stats, Character_stats, Godfinger_stats
 from routes.bangboo_stats import bp as bangboo_stats_bp
 from routes.character_stats import bp as character_stats_bp
-#from routes.godfinger_stats import bp as godfinger_stats_bp
+from routes.godfinger_stats import bp as godfinger_stats_bp
 from models.seed import seed_bangboo, seed_characters, seed_godfinger
 
 def create_app():
@@ -21,7 +21,7 @@ def create_app():
         
     app.register_blueprint(bangboo_stats_bp)
     app.register_blueprint(character_stats_bp)
-    #app.register_blueprint(godfinger_stats_bp)
+    app.register_blueprint(godfinger_stats_bp)
     
     @app.route("/")
     def index():
