@@ -54,3 +54,68 @@ body{
 	color: white;
 	border: 2px dashed white;
 }
+
+.main-panel{
+	width: 100%;
+	background: white;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	margin: 0 0 0 5px;
+}
+
+.main-panel-title{
+	margin: 20px 0 0 0;
+	padding: 0 0 10px 0;
+	text-align: center;
+}
+
+.main-container{
+	padding: 20px;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+	gap: 10px;
+}
+
+.main-card{
+	display: flex;
+	flex-direction: column;
+	background: white;
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: 0 0px 10px black;
+	text-decoration: none;
+	color: black;
+	transition: transform 0.2s;
+	align-items: center;
+	height: 400px;
+}
+
+.game-list{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.info-list{
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
+	border-bottom: 1px solid gray;
+}
+
+.game-name{
+	padding: 5px;
+	margin-right: 150px;
+}
+
+.game-stats{
+	padding: 5px;
+	color: black;
+}
+
+.game-stats.completed {
+	background: green;
+	color: white;
+	
+}

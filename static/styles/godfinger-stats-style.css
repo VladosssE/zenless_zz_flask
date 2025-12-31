@@ -51,6 +51,9 @@ body{
 	text-decoration: none;
 	color: inherit;
 	box-sizing: border-box;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .game-list li,
@@ -188,5 +191,27 @@ body{
 
 .not-completed{
 	background-color: red;
+	color: white;
+}
+
+.achievement-count{
+	background-color: black;
+	color: white;
+	padding: 6px 10px;
+	font-size: 0.8em;
+}
+
+.achievement-count.completed{
+	background-color: green;
+	color: white;
+}
+
+.game-list li.active .achievement-count {
+	background-color: white;
+	color: black;
+}
+
+.game-list li.active .achievement-count.completed {
+	background-color: green;
 	color: white;
 }
