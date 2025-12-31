@@ -5,14 +5,27 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Персонажи</title>
 	<link rel="stylesheet" href="{{ url_for('static', filename='styles/characters-stats-style.css') }}">
+	<script src="{{ url_for('static', filename='js/characters.js') }}"></script>
 </head>
 <body>
+	{% set c_type = request.args.get('current_type') %}
+	<div class="sidebar">
+		<h2>Отряды</h2>
+		<ul class="char-list">
+		<li class="exit-button">
+			<a href="{{ url_for('index') }}">В главное меню</a>
+		</li>
+			{% for type in characters_types %}
+				<li class="{% if type == cur_characters_type %}active{% endif %}">
+					<a href="?c_type={{ type }}">{{ type }}</a>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
 	<div class="main-panel">
-		<a class="exit-button" href="{{ url_for('index') }}">В главное меню</a>
 		<h1 class="main-panel-title">Персонажи</h1>
-		<h1 class="main-panel-second-title">Введите в поля данные, соответствующие вашему прогрессу и нажмите "Сохранить". Один персонаж за раз.</h1>
 		<div class="main-character-container">
-			{% for c in characters %}
+			{% for c in characters if not cur_characters_type or c.character_type == cur_characters_type %}
 				<form class="main-character-card" method="POST" action="/characters_stats/update">
 					<input type="hidden" name="character_id" value="{{ c.character_id }}">
 					<div class="character-left">
@@ -235,7 +248,9 @@
 								</div>
 							</div>
 						</div>
-						<input type="submit" value="Сохранить" class="save-button" style="width: 100%;">
+						<div class="save-button-wrapper">
+							<input type="submit" value="Сохранить" class="save-button" style="width: 100%;">
+						</div>
 					</div>
 				</form>
 			{% endfor %}

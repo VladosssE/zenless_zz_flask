@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, current_app, request, redirect, url_for
+from flask import Blueprint, render_template, current_app, request, redirect, url_for, jsonify
 from services.bangboo_stats_service import BangbooService
 import os
 
@@ -27,9 +27,11 @@ def list_bangboo():
 
 @bp.post("/update")
 def update_bangboo():
+    data = request.get_json()
+    
     BangbooService.update(
-        bangboo_id=request.form["bangboo_id"],
-        level=request.form["bangboo_level"],
-        stars=request.form["bangboo_stars"],
+        bangboo_id=data["bangboo_id"],
+        level=data.get("bangboo_level", 0),
+        stars=data.get("bangboo_stars", 0),
     )
-    return redirect(url_for("bangboo_stats.list_bangboo"))
+    return jsonify({"status": "ok"})

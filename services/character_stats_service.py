@@ -8,6 +8,27 @@ class CharacterService:
         return Character_stats.query.order_by(Character_stats.character_id).all()
 
     @staticmethod
+    def get_all_characters():
+        return(
+            db.session.query(Character_stats.character_type)
+            .distinct()
+            .order_by(Character_stats.character_type)
+            .all()
+            )
+
+    @staticmethod
+    def get_by_type(c_type):
+        return Character_stats.query.filter_by(
+            character_type=c_type
+        ).order_by(Character_stats.character_id).all()
+
+    @staticmethod
+    def get_by_id(c_id):
+        return Character_stats.query.filter_by(
+            character_id=c_id
+        ).order_by(Character_stats.character_id).all()
+
+    @staticmethod
     def update(
         character_id,
         level=None,

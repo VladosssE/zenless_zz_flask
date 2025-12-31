@@ -5,13 +5,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Банбу</title>
 	<link rel="stylesheet" href="{{ url_for('static', filename='styles/bangboo-stats-style.css') }}">
+	<script src="{{ url_for('static', filename='js/bangboo.js') }}"></script>
 </head>
 <body>
 	<div class="main-panel">
 		<a class="exit-button" href="{{ url_for('index') }}">В главное меню</a>
 		<h1 class="main-panel-title">Банбу</h1>
-		<h1 class="main-panel-second-title">Введите в поля "Уровень" и "Количество" данные, соответствующие вашему прогрессу и нажмите "Сохранить". Один банбу за раз.</h1>
-		
 		<div class="main-bangboo-container">
 			{% for b in bangboo %}
 				<form class="main-bangboo-card" method="POST" action="/bangboo_stats/update">
@@ -49,7 +48,9 @@
 								</select>
 							</div>
 						</div>
-						<input type="submit" value="Сохранить" class="save-button">
+						<div class="save-button-wrapper">
+							<input type="submit" value="Сохранить" class="save-button" style="width: 100%;">
+						</div>
 					</div>
 				</form>
 			{% endfor %}
