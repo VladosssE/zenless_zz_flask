@@ -12,6 +12,7 @@ def list_godfinger():
     godfinger = GodfingerService.get_all()
     current_game = request.args.get("game")
     games = GodfingerService.get_all_games()
+    summary = GodfingerService.achievements_summary()
     
     images_dir = os.path.join(
         current_app.root_path, "static", "icons", "godfinger"
@@ -32,7 +33,8 @@ def list_godfinger():
         godfinger=godfinger,
         godfinger_img=sorted(godfinger_img),
         games=[g[0] for g in games],
-        current_game=current_game
+        current_game=current_game,
+        summary=summary
     )
 
 
@@ -53,7 +55,6 @@ def update_godfinger():
     else:
         ach.godfinger_status = "Выполнено"
 
-    
     db.session.commit()
 
     return jsonify({"status": ach.godfinger_status})

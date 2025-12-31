@@ -11,7 +11,7 @@
 	<div class="main-panel">
 		<a class="exit-button" href="{{ url_for('index') }}">В главное меню</a>
 		<h1 class="main-panel-title">Банбу</h1>
-		<div class="main-bangboo-container">
+		<div class="main-container">
 			{% for b in bangboo %}
 				<form class="main-bangboo-card" method="POST" action="/bangboo_stats/update">
 					<input type="hidden" name="bangboo_id" value="{{ b.bangboo_id }}">

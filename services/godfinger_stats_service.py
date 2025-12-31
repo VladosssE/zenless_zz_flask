@@ -1,5 +1,6 @@
 from extensions import db
 from models.tables import Godfinger_stats
+from sqlalchemy import func
 
 class GodfingerService:
 
@@ -32,6 +33,22 @@ class GodfingerService:
             .order_by(Godfinger_stats.godfinger_game)
             .all()
             )
+    
+    @staticmethod
+    def achievements_summary():
+        games = [g[0] for g in Godfinger_stats.query.with_entities(Godfinger_stats.godfinger_game).distinct()]
+        summary = {}
+        for game in games:
+            total = Godfinger_stats.query.filter_by(godfinger_game=game).count()
+            completed = Godfinger_stats.query.filter_by(godfinger_game=game, godfinger_status="Выполнено").count()
+            summary[game] = {"completed": completed, "total": total}
+        return summary
+
+    @staticmethod
+    def total_completed():
+        completed = Godfinger_stats.query.filter_by(godfinger_status="Выполнено").count()
+        total = Godfinger_stats.query.count()
+        return {"completed": completed, "total": total}
 
     @staticmethod
     def update(godfinger_id, status):

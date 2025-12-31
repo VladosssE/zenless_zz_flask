@@ -12,16 +12,22 @@
 		<div class="sidebar">
 			<h2>Мини-игры</h2>
 			<ul class="game-list">
-			<li class="exit-button">
-				<a href="{{ url_for('index') }}">В главное меню</a>
-			</li>
-			{% for game in games %}
-				<li class="{% if game == current_game %}active{% endif %}">
-					<a href="?game={{ game }}">{{ game }}</a>
+				<li class="exit-button">
+					<a href="{{ url_for('index') }}">В главное меню</a>
 				</li>
-			{% endfor %}
-		</ul>
-	</div>
+				{% for game in games %}
+					{% set count = summary[game] %}
+					<li class="{% if game == current_game %}active{% endif %}">
+						<a href="?game={{ game }}">
+							{{ game }}
+							<span class="achievement-count {% if count.completed == count.total %}completed{% endif %}">
+								{{ count.completed }} / {{ count.total }}
+							</span>
+						</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
 
 	<div class="content">
 		<h1 class="main-panel-title">Достижения</h1>

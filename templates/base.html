@@ -8,11 +8,32 @@
 </head>
 <body>
 	<div class="left-panel">
-		<h1 class="left-panel-title">Боковое меню</h1>
+		<h1 class="left-panel-title">Общее</h1>
 		<a class="left-panel-button" href="{{ url_for('bangboo_stats.list_bangboo') }}">Банбу</a>
 		<a class="left-panel-button" href="{{ url_for('characters_stats.list_characters') }}">Персонажи</a>
 
 		<h2 class="left-panel-sec-title">Шестая улица</h2>
-		<a class="left-panel-button" href="{{ url_for('godfinger_stats.list_godfinger') }}">Годфингер</a>
+		<a class="left-panel-button" href="{{ url_for('godfinger_stats.list_godfinger') }}">
+			Годфингер ({{ total_stats.completed }}/{{ total_stats.total }})
+		</a>
+	</div>
+	<div class="main-panel">
+		<h1 class="main-panel-title">Статистика</h1>
+		<div class="main-container">
+			<div class="main-card">
+				<h2>Годфингер</h2>
+				<ul class="game-list">
+					{% for game in games_list %}
+						{% set count = summary[game] %}
+						<li class="info-list">
+							<span class="game-name">{{ game }}</span>
+							<span class="game-stats {% if count.completed == count.total %}completed{% endif %}">
+								{{ count.completed }} / {{ count.total }}
+							</span>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
 	</div>
 </body>
