@@ -16,6 +16,54 @@ body{
 	background: black;
 }
 
+.sidebar{
+	width: 25%;
+	background: white;
+	padding: 20px;
+	overflow-y: auto;
+	border-right: 5px dashed black;
+}
+
+.sidebar h2{
+	text-align: center;
+	margin-top: 0;
+}
+
+.char-list{
+	padding: 0;
+	margin: 0;
+}
+
+.char-list li{
+	list-style: none;
+	margin-bottom: 5px;
+	cursor: pointer;
+	border-radius: 4px;
+	transition: 0.1s;
+	border: 2px dashed gray;
+}
+
+.char-list li a{
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding: 8px 10px;
+	text-decoration: none;
+	color: inherit;
+	box-sizing: border-box;
+}
+
+.char-list li,
+.char-list li a{
+	box-sizing: border-box;
+}
+
+.char-list li:hover{
+	background-color: black;
+	color: white;
+	border: 2px dashed white;
+}
+
 .main-panel{
 	width: 100%;
 	background: white;
@@ -154,7 +202,7 @@ body{
 	background-color: transparent;
 	border: 2px dashed black;
 	cursor: pointer;
-	margin: 50px 10px 5px 0;
+	margin: 50px 10px 0 0;
 	font-family: mr_norwesterG, Courier;
 	font-size: 20px;
 	transition: 0.1s;
@@ -172,8 +220,6 @@ body{
 	font-family: mr_norwesterG, Courier;
 	background: transparent;
 	color: black;
-	padding: 10px 20px;
-	margin: 10px;
 	text-decoration: none;
 	transition: 0.1s;
 	cursor: pointer;
@@ -207,4 +253,26 @@ body{
 	flex-direction: column;
 	gap: 10px;
 	flex-grow: 1;
+}
+
+.save-button-wrapper {
+	position: relative;
+}
+
+.save-message {
+	position: absolute;
+	bottom: 50%;
+	left: 50%;
+	transform: translateX(-50%);
+	margin-bottom: 6px;
+	color: green;
+	font-size: 18px;
+	white-space: nowrap;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.3s ease;
+}
+
+.save-message.visible {
+	opacity: 1;
 }

@@ -65,11 +65,15 @@ body{
 }
 
 .exit-button{
-	margin-bottom: 25px;
-	cursor: pointer;
-	border-radius: 4px;
+	align-self: flex-start;
+	text-align: center;
+	font-family: mr_norwesterG, Courier;
+	background: transparent;
+	color: black;
+	text-decoration: none;
 	transition: 0.1s;
-	background: indianred;
+	cursor: pointer;
+	border: 2px dashed gray;
 }
 
 .exit-button:hover{
@@ -86,9 +90,9 @@ body{
 }
 
 .game-list li.active{
-    background: black;
-    color: white;
-    border: 2px dashed white;
+	background: black;
+	color: white;
+	border: 2px dashed white;
 }
 
 .content{
@@ -111,13 +115,13 @@ body{
 }
 
 .column{
-	border: 1px solid white;
+	border: 2px dashed gray;
 	padding: 10px;
 }
 
 .column h3{
 	text-align: center;
-	margin-top: 0;
+	margin: 0 0 10px 0;
 }
 
 .achievement{
@@ -128,6 +132,10 @@ body{
 	border-radius: 6px;
 	background: white;
 	transition: 0.1s;
+}
+
+.achievement:hover{
+	background: yellow;
 }
 
 .achievement.ach-completed{

@@ -75,7 +75,7 @@ body{
 	background-color: transparent;
 	border: 2px dashed black;
 	cursor: pointer;
-	margin: 0 10px 5px 10px;
+	margin: 20px 0 0 0;
 	font-family: mr_norwesterG, Courier;
 	font-size: 20px;
 	transition: 0.1s;
@@ -174,6 +174,7 @@ body{
 }
 
 .main-bangboo-card{
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	background: white;
@@ -186,4 +187,29 @@ body{
 
 .bangboo-name{
 	text-align: center;
+}
+
+.save-button-wrapper {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.save-message {
+	position: absolute;
+	bottom: 80%;
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+	color: green;
+	font-size: 16px;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	pointer-events: none;
+	white-space: nowrap;
+	z-index: 10;
+}
+
+.save-message.error {
+	color: red;
 }
