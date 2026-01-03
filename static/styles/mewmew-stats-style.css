@@ -1,0 +1,217 @@
+@font-face{
+	font-family: 'mr_norwesterG';
+	src: url('/static/fonts/mr_norwesterG.otf') format('opentype');
+}
+
+@font-face{
+	font-family: 'Norwester';
+	src: url('/static/fonts/norwester.otf') format('opentype');
+}
+
+body{
+	margin: 0;
+	font-family: mr_norwesterG, Courier;
+	height: 100vh;
+	display: flex;
+	background: black;
+}
+
+.sidebar{
+	width: 25%;
+	background: white;
+	padding: 20px;
+	overflow-y: auto;
+	border-right: 5px dashed black;
+}
+
+.sidebar h2{
+	text-align: center;
+	margin-top: 0;
+}
+
+.street-list{
+	padding: 0;
+	margin: 0;
+}
+
+.street-list li{
+	list-style: none;
+	margin-bottom: 5px;
+	cursor: pointer;
+	border-radius: 4px;
+	transition: 0.1s;
+	border: 2px dashed gray;
+}
+
+.street-list li a{
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding: 8px 10px;
+	text-decoration: none;
+	color: inherit;
+	box-sizing: border-box;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.street-list li,
+.street-list li a{
+	box-sizing: border-box;
+}
+
+.street-list li:hover{
+	background-color: black;
+	color: white;
+	border: 2px dashed white;
+}
+
+.exit-button{
+	align-self: flex-start;
+	text-align: center;
+	font-family: mr_norwesterG, Courier;
+	background: transparent;
+	color: black;
+	text-decoration: none;
+	transition: 0.1s;
+	cursor: pointer;
+	border: 2px dashed gray;
+}
+
+.exit-button:hover{
+	background: black;
+	color: white;
+	border: 2px dashed white;
+}
+
+.game-list a,
+.exit-button a{
+	text-decoration: none;
+	color: inherit;
+	display: block;
+}
+
+.game-list li.active{
+	background: black;
+	color: white;
+	border: 2px dashed white;
+}
+
+.content{
+	width: 85%;
+	padding: 0 20px 20px 20px;
+	overflow-y: auto;
+}
+
+.main-panel-title{
+	margin: 20px 0 0 0;
+	padding: 0 0 10px 0;
+	text-align: center;
+	color: white;
+}
+
+.columns{
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	gap: 20px;
+}
+
+.column{
+	border: 2px dashed gray;
+	padding: 10px;
+}
+
+.column h3{
+	text-align: center;
+	margin: 0 0 10px 0;
+}
+
+.achievement{
+	display: flex;
+	align-items: center;
+	margin-bottom: 8px;
+	padding: 8px;
+	border-radius: 6px;
+	background: white;
+	transition: 0.1s;
+}
+
+.achievement:hover{
+	background: yellow;
+}
+
+.achievement.ach-completed{
+	background: green;
+	color: white;
+}
+
+.achievement.ach-completed small{
+	color: white;
+}
+
+.achievement img{
+	width: 32px;
+	height: 32px;
+	margin-right: 10px;
+}
+
+.achievement-info{
+	flex-grow: 1;
+}
+
+.achievement-info strong{
+	font-weight: 400;
+	display: block;
+	font-size: 14px;
+}
+
+.achievement-info small{
+	font-size: 14px;
+	color: gray;
+}
+
+.achievement-btn{
+	all: unset;
+	width: 100%;
+	cursor: pointer;
+}
+
+.status{
+	font-size: 11px;
+	padding: 3px 6px;
+	border-radius: 4px;
+	white-space: nowrap;
+}
+
+.completed{
+	background-color: green;
+	color: white;
+}
+
+.not-completed{
+	background-color: red;
+	color: white;
+}
+
+.achievement-count{
+	background-color: black;
+	color: white;
+	padding: 6px 10px;
+	font-size: 0.8em;
+}
+
+.achievement-count.completed{
+	background-color: green;
+	color: white;
+}
+
+.game-list li.active .achievement-count {
+	background-color: white;
+	color: black;
+}
+
+.game-list li.active .achievement-count.completed {
+	background-color: green;
+	color: white;
+}

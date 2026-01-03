@@ -36,7 +36,7 @@ body{
 }
 
 .left-panel-button{
-	width: 200px;
+	width: 250px;
 	margin: 20px 0 0 0;
 	text-align: center;
 	font-family: mr_norwesterG, Courier;
@@ -47,6 +47,7 @@ body{
 	transition: 0.1s;
 	cursor: pointer;
 	border: 2px dashed gray;
+	justify-content: space-between;
 }
 
 .left-panel-button:hover{
@@ -73,25 +74,25 @@ body{
 .main-container{
 	padding: 20px;
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+	grid-template-columns: repeat(3, 1fr);
 	gap: 10px;
 }
 
 .main-card{
-	display: flex;
-	flex-direction: column;
-	background: white;
-	border-radius: 8px;
-	overflow: hidden;
-	box-shadow: 0 0px 10px black;
-	text-decoration: none;
-	color: black;
-	transition: transform 0.2s;
+	border: 2px dashed gray;
+	padding: 10px;
 	align-items: center;
-	height: 400px;
 }
 
-.game-list{
+.main-card-title{
+	font-size: 24px;
+	text-align: center;
+	margin: 5px 0 10px 0;
+	font-weight: 400;
+	color: darkblue;
+}
+
+.main-card-info-list{
 	list-style: none;
 	padding: 0;
 	margin: 0;
@@ -101,21 +102,21 @@ body{
 	display: flex;
 	justify-content: space-between;
 	padding: 10px;
-	border-bottom: 1px solid gray;
+	border-bottom: 1px dashed gray;
 }
 
-.game-name{
+.info-name{
 	padding: 5px;
-	margin-right: 150px;
 }
 
-.game-stats{
+.info-stats{
 	padding: 5px;
 	color: black;
+	width: 15%;
+	text-align: center;
 }
 
-.game-stats.completed {
+.info-stats.completed {
 	background: green;
 	color: white;
-	
 }
