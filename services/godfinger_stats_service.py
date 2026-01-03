@@ -49,11 +49,24 @@ class GodfingerService:
         completed = Godfinger_stats.query.filter_by(godfinger_status="Выполнено").count()
         total = Godfinger_stats.query.count()
         return {"completed": completed, "total": total}
+    
+    @staticmethod
+    def complete_medal(medal_icon):
+        Godfinger_stats.query.filter_by(
+            godfinger_medal_icon=medal_icon).update(
+                {"godfinger_status": "Выполнено"}
+            )
+        db.session.commit()
 
+    @staticmethod
+    def complete_all():
+        Godfinger_stats.query.update(
+            {"godfinger_status": "Выполнено"}
+        )
+        db.session.commit()
+        
     @staticmethod
     def update(godfinger_id, status):
         godfinger = Godfinger_stats.query.get_or_404(godfinger_id)
-
         godfinger.godfinger_status = str(status)
-
         db.session.commit()

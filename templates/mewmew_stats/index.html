@@ -15,6 +15,11 @@
 				<li class="exit-button">
 					<a href="{{ url_for('index') }}">В главное меню</a>
 				</li>
+				<li>
+					<form method="post" action="{{ url_for('mewmew_stats.complete_all') }}">
+						<button type="submit" class="complete-all-button">Выполнить всё</button>
+					</form>
+				</li>
 				{% for street in streets %}
 					{% set count = summary[street] %}
 					<li class="{% if street == current_street %}active{% endif %}">

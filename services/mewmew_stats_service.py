@@ -51,6 +51,13 @@ class MewmewService:
         return {"completed": completed, "total": total}
 
     @staticmethod
+    def complete_all():
+        Mewmew_stats.query.update(
+            {"mew_status": "Выполнено"}
+        )
+        db.session.commit()
+
+    @staticmethod
     def update(mew_id, status):
         mews = Mewmew_stats.query.get_or_404(mew_id)
 

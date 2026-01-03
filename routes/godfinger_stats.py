@@ -38,6 +38,18 @@ def list_godfinger():
     )
 
 
+@bp.route("/godfinger/complete_medal/<medal>", methods=["POST"])
+def complete_medal(medal):
+    GodfingerService.complete_medal(medal)
+    return redirect(request.referrer)
+
+
+@bp.route("/godfinger/complete_all", methods=["POST"])
+def complete_all():
+    GodfingerService.complete_all()
+    return redirect(request.referrer)
+
+
 @bp.route("/update_godfinger", methods=["POST"])
 def update_godfinger():
     data = request.get_json()

@@ -28,6 +28,12 @@ def list_mewmew():
     )
 
 
+@bp.route("/mewmew/complete_all", methods=["POST"])
+def complete_all():
+    MewmewService.complete_all()
+    return redirect(request.referrer)
+
+
 @bp.route("/update_mewmew", methods=["POST"])
 def update_mewmew():
     data = request.get_json()

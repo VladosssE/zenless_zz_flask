@@ -51,6 +51,21 @@ class SageService:
         return {"completed": completed, "total": total}
 
     @staticmethod
+    def complete_day(sage_time):
+        Sage_stats.query.filter_by(
+            sage_time=sage_time).update(
+                {"sage_status": "Получено"}
+            )
+        db.session.commit()
+
+    @staticmethod
+    def complete_all():
+        Sage_stats.query.update(
+            {"sage_status": "Получено"}
+        )
+        db.session.commit()
+
+    @staticmethod
     def update(sage_id, status):
         sage = Sage_stats.query.get_or_404(sage_id)
 

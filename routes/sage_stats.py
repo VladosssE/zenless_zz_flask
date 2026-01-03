@@ -28,6 +28,18 @@ def list_sage():
     )
 
 
+@bp.route("/sage/complete_day/<day>", methods=["POST"])
+def complete_day(day):
+    SageService.complete_day(day)
+    return redirect(request.referrer)
+
+
+@bp.route("/sage/complete_all", methods=["POST"])
+def complete_all():
+    SageService.complete_all()
+    return redirect(request.referrer)
+
+
 @bp.route("/update_sage", methods=["POST"])
 def update_sage():
     data = request.get_json()
