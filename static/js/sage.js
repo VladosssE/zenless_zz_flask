@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-	const buttons = document.querySelectorAll(".achievement-btn");
+	const buttons = document.querySelectorAll(".column-content-btn");
 
 	buttons.forEach(button => {
 		const form = button.closest("form");
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				return res.json();
 			})
 			.then(data => {
-				const achievement = button.querySelector(".achievement");
+				const achievement = button.querySelector(".column-content");
 				const status = button.querySelector(".status");
 
 				if (!achievement || !status) return;

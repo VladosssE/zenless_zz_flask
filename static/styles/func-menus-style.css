@@ -1,0 +1,219 @@
+@font-face{
+	font-family: 'mr_norwesterG';
+	src: url('/static/fonts/mr_norwesterG.otf') format('opentype');
+}
+
+body{
+	margin: 0;
+	font-family: mr_norwesterG, Courier;
+	height: 100vh;
+	display: flex;
+	background: black;
+}
+
+.sidebar{
+	width: 20%;
+	background: white;
+	padding: 20px;
+	margin: 0 20px 0 0;
+	overflow-y: auto;
+	border-right: 5px dashed black;
+}
+
+.sidebar h2{
+	text-align: center;
+	margin-top: 0;
+}
+
+.sidebar-list{
+	padding: 0;
+	margin: 0;
+}
+
+.sidebar-list li{
+	list-style: none;
+	margin-bottom: 5px;
+	cursor: pointer;
+	transition: 0.1s;
+	border: 2px dashed gray;
+}
+
+.sidebar-list li a{
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding: 8px 10px;
+	text-decoration: none;
+	color: inherit;
+	box-sizing: border-box;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.sidebar-list li:hover{
+	background-color: black;
+	color: white;
+	border: 2px dashed white;
+}
+
+.sidebar-list li.active{
+	background: black;
+	color: white;
+	border: 2px dashed white;
+}
+
+.content{
+	width: 80%;
+	padding: 0 20px 0 0;
+	overflow-y: auto;
+}
+
+.main-panel-title{
+	margin: 20px 0 0 0;
+	padding: 0 0 10px 0;
+	text-align: center;
+	color: white;
+}
+
+.one-columns{
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+}
+
+.two-columns{
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.three-columns{
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+}
+
+.four-columns{
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.column{
+	border: 2px dashed gray;
+	padding: 10px;
+}
+
+.column h3{
+	text-align: center;
+	margin: 0 0 10px 0;
+}
+
+.column-content{
+	display: flex;
+	align-items: center;
+	margin-bottom: 8px;
+	padding: 8px;
+	border-radius: 6px;
+	background: white;
+	transition: 0.1s;
+}
+
+.column-content:hover{
+	background: yellow;
+}
+
+.column-content.ach-completed{
+	background: green;
+	color: white;
+}
+
+.column-content.ach-completed small{
+	color: white;
+}
+
+.column-content img{
+	width: 32px;
+	height: 32px;
+	margin-right: 10px;
+}
+
+.column-content-info{
+	flex-grow: 1;
+}
+
+.column-content-info strong{
+	font-weight: 400;
+	display: block;
+	font-size: 14px;
+}
+
+.column-content-info small{
+	font-size: 14px;
+	color: gray;
+}
+
+.column-content-btn{
+	all: unset;
+	width: 100%;
+	cursor: pointer;
+}
+
+.status{
+	font-size: 11px;
+	padding: 3px 6px;
+	border-radius: 4px;
+	white-space: nowrap;
+}
+
+.completed{
+	background-color: green;
+	color: white;
+}
+
+.not-completed{
+	background-color: red;
+	color: white;
+}
+
+.column-content-count{
+	background-color: black;
+	color: white;
+	padding: 6px 10px;
+	font-size: 0.8em;
+}
+
+.column-content-count.completed{
+	background-color: green;
+	color: white;
+}
+
+.complete-certain-button{
+	background: none;
+	border: 2px dashed gray;
+	cursor: pointer;
+	width: 100%;
+	font-family: mr_norwesterG, Courier;
+	padding: 10px 10px;
+	margin: 0 0 10px 0;
+	color: white;
+	font-size: 16px;
+	transition: 0.1s;
+}
+
+.complete-certain-button:hover{
+	background: white;
+	color: black;
+}
+
+.complete-all-button{
+	background: orange;
+	width: 100%;
+	border: none;
+	font-family: mr_norwesterG, Courier;
+	cursor: pointer;
+	padding: 10px 20px;
+	transition: 0.1s;
+}
+
+.complete-all-button:hover{
+	color: white;
+	background: green;
+}

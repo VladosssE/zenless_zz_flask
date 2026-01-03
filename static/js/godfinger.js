@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-	const forms = document.querySelectorAll(".achievement-btn");
+	const forms = document.querySelectorAll(".column-content-btn");
 
 	forms.forEach(button => {
 		const form = button.closest("form");
@@ -20,11 +20,11 @@ document.addEventListener("DOMContentLoaded", () => {
 			.then(res => res.json())
 			.then(data => {
 				if (data.status === "Выполнено") {
-					button.querySelector(".achievement").classList.add("ach-completed");
+					button.querySelector(".column-content").classList.add("ach-completed");
 					button.querySelector(".status").classList.add("completed");
 					button.querySelector(".status").classList.remove("not-completed");
 				} else {
-					button.querySelector(".achievement").classList.remove("ach-completed");
+					button.querySelector(".column-content").classList.remove("ach-completed");
 					button.querySelector(".status").classList.remove("completed");
 					button.querySelector(".status").classList.add("not-completed");
 				}
