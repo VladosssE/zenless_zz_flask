@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Инспектор Мяучело</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles/sage-stats-style.css') }}">
+	<script src="{{ url_for('static', filename='js/sage.js') }}"></script>
+</head>
+<body>
+	{% set current_street = request.args.get('street') %}
+		<div class="sidebar">
+			<h2>Локации</h2>
+			<ul class="street-list">
+				<li class="exit-button">
+					<a href="{{ url_for('index') }}">В главное меню</a>
+				</li>
+				{% for street in streets %}
+					{% set count = summary[street] %}
+					<li class="{% if street == current_street %}active{% endif %}">
+						<a href="?street={{ street }}">
+							{{ street }}
+							<span class="achievement-count {% if count.completed == count.total %}completed{% endif %}">
+								{{ count.completed }} / {{ count.total }}
+							</span>
+						</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+
+	<div class="content">
+		<h1 class="main-panel-title">Мудрец в бочке</h1>
+
+		<div class="columns">
+			<div class="column">
+				<h3 style="color:white"></h3>
+				{% for ach in sage if not current_street or ach.sage_street == current_street %}
+					<form method="post" action="{{ url_for('sage_stats.update_sage') }}">
+						<input type="hidden" name="sage_id" value="{{ ach.sage_id }}">
+						<button type="submit" class="achievement-btn">
+							<div class="achievement {{ 'ach-completed' if ach.sage_status == 'Получено' }}">
+								<div class="achievement-info">
+									<strong>{{ ach.sage_time }}</strong>
+									<small>{{ ach.sage_location }}</small>
+								</div>
+								<span class="status {{ 'completed' if ach.sage_status == 'Получено' else 'not-completed' }}">
+									{{ ach.sage_status }}
+								</span>
+							</div>
+						</button>
+					</form>
+				{% endfor %}
+			</dib>
+		</div>
+	</div>
+
+</body>
+</html>

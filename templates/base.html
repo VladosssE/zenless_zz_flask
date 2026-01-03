@@ -15,6 +15,10 @@
 			Инспектор Мяучело ({{ total_mewmew.completed }}/{{ total_mewmew.total }})
 		</a>
 
+		<a class="left-panel-button" href="{{ url_for('sage_stats.list_sage') }}">
+			Мудрец в бочке ({{ total_sage.completed }}/{{ total_sage.total }})
+		</a>
+
 		<h2 class="left-panel-sec-title">Шестая улица</h2>
 		<a class="left-panel-button" href="{{ url_for('godfinger_stats.list_godfinger') }}">
 			Годфингер ({{ total_stats.completed }}/{{ total_stats.total }})
@@ -45,6 +49,20 @@
 						{% set count = mewmew_summary[mew] %}
 						<li class="info-list">
 							<span class="info-name">{{ mew }}</span>
+							<span class="info-stats {% if count.completed == count.total %}completed{% endif %}">
+								{{ count.completed }} / {{ count.total }}
+							</span>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="main-card">
+				<h2 class="main-card-title">Мудрец в бочке</h2>
+				<ul class="main-card-info-list">
+					{% for sage in sage_list %}
+						{% set count = sage_summary[sage] %}
+						<li class="info-list">
+							<span class="info-name">{{ sage }}</span>
 							<span class="info-stats {% if count.completed == count.total %}completed{% endif %}">
 								{{ count.completed }} / {{ count.total }}
 							</span>

@@ -1,13 +1,15 @@
 from flask import Flask, render_template, session
 from extensions import db
-from models.tables import Bangboo_stats, Character_stats, Godfinger_stats
+from models.tables import Bangboo_stats, Character_stats, Godfinger_stats, Sage_stats
 from routes.bangboo_stats import bp as bangboo_stats_bp
 from routes.character_stats import bp as character_stats_bp
 from routes.godfinger_stats import bp as godfinger_stats_bp
 from routes.mewmew_stats import bp as mew_stats_bp
-from models.seed import seed_bangboo, seed_characters, seed_godfinger, seed_mewmew
+from routes.sage_stats import bp as sage_stats_bp
+from models.seed import seed_bangboo, seed_characters, seed_godfinger, seed_mewmew, seed_sage
 from services.godfinger_stats_service import GodfingerService
 from services.mewmew_stats_service import MewmewService
+from services.sage_stats_service import SageService
 
 def create_app():
     app = Flask(__name__, template_folder="templates", static_folder="static")
@@ -22,11 +24,13 @@ def create_app():
         seed_characters()
         seed_godfinger()
         seed_mewmew()
+        seed_sage()
         
     app.register_blueprint(bangboo_stats_bp)
     app.register_blueprint(character_stats_bp)
     app.register_blueprint(godfinger_stats_bp)
     app.register_blueprint(mew_stats_bp)
+    app.register_blueprint(sage_stats_bp)
     
     @app.route("/")
     def index():
@@ -37,6 +41,10 @@ def create_app():
         total_mewmew = MewmewService.total_completed()
         mewmew_list = MewmewService.get_all_streets()
         streets_summary = MewmewService.streets_summary()
+
+        total_sage = SageService.total_completed()
+        sage_list = SageService.get_all_streets()
+        sage_summary = SageService.streets_summary()
         
         return render_template(
             "base.html",
@@ -45,7 +53,10 @@ def create_app():
             summary=games_summary,
             total_mewmew=total_mewmew,
             mewmew_list=[l[0] for l in mewmew_list],
-            mewmew_summary=streets_summary
+            mewmew_summary=streets_summary,
+            total_sage=total_sage,
+            sage_list=[l[0] for l in sage_list],
+            sage_summary=sage_summary
         )
 
     return app
