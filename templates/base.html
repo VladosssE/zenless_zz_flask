@@ -16,18 +16,35 @@
 		<a class="left-panel-button" href="{{ url_for('godfinger_stats.list_godfinger') }}">
 			Годфингер ({{ total_stats.completed }}/{{ total_stats.total }})
 		</a>
+		<a class="left-panel-button" href="{{ url_for('mewmew_stats.list_mewmew') }}">
+			Инспектор Мяучело ({{ total_mewmew.completed }}/{{ total_mewmew.total }})
+		</a>
 	</div>
 	<div class="main-panel">
 		<h1 class="main-panel-title">Статистика</h1>
 		<div class="main-container">
 			<div class="main-card">
-				<h2>Годфингер</h2>
-				<ul class="game-list">
+				<h2 class="main-card-title">Годфингер</h2>
+				<ul class="main-card-info-list">
 					{% for game in games_list %}
 						{% set count = summary[game] %}
 						<li class="info-list">
-							<span class="game-name">{{ game }}</span>
-							<span class="game-stats {% if count.completed == count.total %}completed{% endif %}">
+							<span class="info-name">{{ game }}</span>
+							<span class="info-stats {% if count.completed == count.total %}completed{% endif %}">
+								{{ count.completed }} / {{ count.total }}
+							</span>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="main-card">
+				<h2 class="main-card-title">Инспектор Мяучело</h2>
+				<ul class="main-card-info-list">
+					{% for mew in mewmew_list %}
+						{% set count = mewmew_summary[mew] %}
+						<li class="info-list">
+							<span class="info-name">{{ mew }}</span>
+							<span class="info-stats {% if count.completed == count.total %}completed{% endif %}">
 								{{ count.completed }} / {{ count.total }}
 							</span>
 						</li>

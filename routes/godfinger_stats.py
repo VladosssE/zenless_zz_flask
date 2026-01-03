@@ -48,7 +48,7 @@ def update_godfinger():
 
     ach = Godfinger_stats.query.get(godfinger_id)
     if not ach:
-        return jsonify({"error": "Достижение не найдено"}), 404
+        return jsonify({"error": "Не найдено"}), 404
 
     if ach.godfinger_status == "Выполнено":
         ach.godfinger_status = "Не выполнено"
