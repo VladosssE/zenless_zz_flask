@@ -11,14 +11,15 @@
 		<h1 class="left-panel-title">Общее</h1>
 		<a class="left-panel-button" href="{{ url_for('bangboo_stats.list_bangboo') }}">Банбу</a>
 		<a class="left-panel-button" href="{{ url_for('characters_stats.list_characters') }}">Персонажи</a>
+		<a class="left-panel-button" href="{{ url_for('mewmew_stats.list_mewmew') }}">
+			Инспектор Мяучело ({{ total_mewmew.completed }}/{{ total_mewmew.total }})
+		</a>
 
 		<h2 class="left-panel-sec-title">Шестая улица</h2>
 		<a class="left-panel-button" href="{{ url_for('godfinger_stats.list_godfinger') }}">
 			Годфингер ({{ total_stats.completed }}/{{ total_stats.total }})
 		</a>
-		<a class="left-panel-button" href="{{ url_for('mewmew_stats.list_mewmew') }}">
-			Инспектор Мяучело ({{ total_mewmew.completed }}/{{ total_mewmew.total }})
-		</a>
+		
 	</div>
 	<div class="main-panel">
 		<h1 class="main-panel-title">Статистика</h1>
