@@ -215,3 +215,36 @@ body{
 	background-color: green;
 	color: white;
 }
+
+.complete-day-button{
+	background: none;
+	border: 2px dashed gray;
+	cursor: pointer;
+	width: 100%;
+	font-family: mr_norwesterG, Courier;
+	padding: 10px 10px;
+	margin: 0 0 10px 0;
+	color: white;
+	font-size: 16px;
+	transition: 0.1s;
+}
+
+.complete-day-button:hover{
+	background: white;
+	color: black;
+}
+
+.complete-all-button{
+	background: orange;
+	width: 100%;
+	border: none;
+	font-family: mr_norwesterG, Courier;
+	cursor: pointer;
+	padding: 10px 20px;
+	transition: 0.1s;
+}
+
+.complete-all-button:hover{
+	color: white;
+	background: green;
+}

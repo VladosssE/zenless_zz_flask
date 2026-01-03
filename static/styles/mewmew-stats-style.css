@@ -215,3 +215,18 @@ body{
 	background-color: green;
 	color: white;
 }
+
+.complete-all-button{
+	background: orange;
+	width: 100%;
+	border: none;
+	font-family: mr_norwesterG, Courier;
+	cursor: pointer;
+	padding: 10px 20px;
+	transition: 0.1s;
+}
+
+.complete-all-button:hover{
+	color: white;
+	background: green;
+}
