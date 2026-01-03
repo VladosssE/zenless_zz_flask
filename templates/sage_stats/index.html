@@ -3,15 +3,15 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Инспектор Мяучело</title>
-	<link rel="stylesheet" href="{{ url_for('static', filename='styles/sage-stats-style.css') }}">
+	<title>Мудрец в бочке</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles/func-menus-style.css') }}">
 	<script src="{{ url_for('static', filename='js/sage.js') }}"></script>
 </head>
 <body>
 	{% set current_street = request.args.get('street') %}
 		<div class="sidebar">
 			<h2>Локации</h2>
-			<ul class="street-list">
+			<ul class="sidebar-list">
 				<li class="exit-button">
 					<a href="{{ url_for('index') }}">В главное меню</a>
 				</li>
@@ -25,7 +25,7 @@
 					<li class="{% if street == current_street %}active{% endif %}">
 						<a href="?street={{ street }}">
 							{{ street }}
-							<span class="achievement-count {% if count.completed == count.total %}completed{% endif %}">
+							<span class="column-content-count {% if count.completed == count.total %}completed{% endif %}">
 								{{ count.completed }} / {{ count.total }}
 							</span>
 						</a>
@@ -36,18 +36,18 @@
 
 	<div class="content">
 		<h1 class="main-panel-title">Мудрец в бочке</h1>
-		<div class="columns">
+		<div class="two-columns">
 			<div class="column">
 				<h3 style="color:white">Утро</h3>
 				<form method="post" action="{{ url_for('sage_stats.complete_day', day='Утро') }}">
-					<button type="submit" class="complete-day-button">Выполнить все утренние достижения</button>
+					<button type="submit" class="complete-certain-button">Выполнить все утренние достижения</button>
 				</form>
 				{% for ach in sage if ach.sage_time == 'Утро' and (not current_street or ach.sage_street == current_street) %}
 					<form method="post" action="{{ url_for('sage_stats.update_sage') }}">
 						<input type="hidden" name="sage_id" value="{{ ach.sage_id }}">
-						<button type="submit" class="achievement-btn">
-							<div class="achievement {{ 'ach-completed' if ach.sage_status == 'Получено' }}">
-								<div class="achievement-info">
+						<button type="submit" class="column-content-btn">
+							<div class="column-content {{ 'ach-completed' if ach.sage_status == 'Получено' }}">
+								<div class="column-content-info">
 									<strong>{{ ach.sage_time }}</strong>
 									<small>{{ ach.sage_location }}</small>
 								</div>
@@ -62,14 +62,14 @@
 			<div class="column">
 				<h3 style="color:white">День</h3>
 				<form method="post" action="{{ url_for('sage_stats.complete_day', day='День') }}">
-					<button type="submit" class="complete-day-button">Выполнить все дневные достижения</button>
+					<button type="submit" class="complete-certain-button">Выполнить все дневные достижения</button>
 				</form>
 				{% for ach in sage if ach.sage_time == 'День' and (not current_street or ach.sage_street == current_street) %}
 					<form method="post" action="{{ url_for('sage_stats.update_sage') }}">
 						<input type="hidden" name="sage_id" value="{{ ach.sage_id }}">
-						<button type="submit" class="achievement-btn">
-							<div class="achievement {{ 'ach-completed' if ach.sage_status == 'Получено' }}">
-								<div class="achievement-info">
+						<button type="submit" class="column-content-btn">
+							<div class="column-content {{ 'ach-completed' if ach.sage_status == 'Получено' }}">
+								<div class="column-content-info">
 									<strong>{{ ach.sage_time }}</strong>
 									<small>{{ ach.sage_location }}</small>
 								</div>
@@ -84,14 +84,14 @@
 			<div class="column">
 				<h3 style="color:white">Вечер</h3>
 				<form method="post" action="{{ url_for('sage_stats.complete_day', day='Вечер') }}">
-					<button type="submit" class="complete-day-button">Выполнить все вечерние достижения</button>
+					<button type="submit" class="complete-certain-button">Выполнить все вечерние достижения</button>
 				</form>
 				{% for ach in sage if ach.sage_time == 'Вечер' and (not current_street or ach.sage_street == current_street) %}
 					<form method="post" action="{{ url_for('sage_stats.update_sage') }}">
 						<input type="hidden" name="sage_id" value="{{ ach.sage_id }}">
-						<button type="submit" class="achievement-btn">
-							<div class="achievement {{ 'ach-completed' if ach.sage_status == 'Получено' }}">
-								<div class="achievement-info">
+						<button type="submit" class="column-content-btn">
+							<div class="column-content {{ 'ach-completed' if ach.sage_status == 'Получено' }}">
+								<div class="column-content-info">
 									<strong>{{ ach.sage_time }}</strong>
 									<small>{{ ach.sage_location }}</small>
 								</div>
@@ -106,14 +106,14 @@
 			<div class="column">
 				<h3 style="color:white">Ночь</h3>
 				<form method="post" action="{{ url_for('sage_stats.complete_day', day='Ночь') }}">
-					<button type="submit" class="complete-day-button">Выполнить все ночные достижения</button>
+					<button type="submit" class="complete-certain-button">Выполнить все ночные достижения</button>
 				</form>
 				{% for ach in sage if ach.sage_time == 'Ночь' and (not current_street or ach.sage_street == current_street) %}
 					<form method="post" action="{{ url_for('sage_stats.update_sage') }}">
 						<input type="hidden" name="sage_id" value="{{ ach.sage_id }}">
-						<button type="submit" class="achievement-btn">
-							<div class="achievement {{ 'ach-completed' if ach.sage_status == 'Получено' }}">
-								<div class="achievement-info">
+						<button type="submit" class="column-content-btn">
+							<div class="column-content {{ 'ach-completed' if ach.sage_status == 'Получено' }}">
+								<div class="column-content-info">
 									<strong>{{ ach.sage_time }}</strong>
 									<small>{{ ach.sage_location }}</small>
 								</div>

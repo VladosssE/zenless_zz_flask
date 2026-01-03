@@ -4,14 +4,14 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Инспектор Мяучело</title>
-	<link rel="stylesheet" href="{{ url_for('static', filename='styles/mewmew-stats-style.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles/func-menus-style.css') }}">
 	<script src="{{ url_for('static', filename='js/mewmew.js') }}"></script>
 </head>
 <body>
 	{% set current_street = request.args.get('street') %}
 		<div class="sidebar">
 			<h2>Локации</h2>
-			<ul class="street-list">
+			<ul class="sidebar-list">
 				<li class="exit-button">
 					<a href="{{ url_for('index') }}">В главное меню</a>
 				</li>
@@ -25,7 +25,7 @@
 					<li class="{% if street == current_street %}active{% endif %}">
 						<a href="?street={{ street }}">
 							{{ street }}
-							<span class="achievement-count {% if count.completed == count.total %}completed{% endif %}">
+							<span class="column-content-count {% if count.completed == count.total %}completed{% endif %}">
 								{{ count.completed }} / {{ count.total }}
 							</span>
 						</a>
@@ -37,15 +37,14 @@
 	<div class="content">
 		<h1 class="main-panel-title">Инспектор Мяучело</h1>
 
-		<div class="columns">
+		<div class="one-columns">
 			<div class="column">
-				<h3 style="color:white"></h3>
 				{% for ach in mewmew if not current_street or ach.mew_street == current_street %}
 					<form method="post" action="{{ url_for('mewmew_stats.update_mewmew') }}">
 						<input type="hidden" name="mew_id" value="{{ ach.mew_id }}">
-						<button type="submit" class="achievement-btn">
-							<div class="achievement {{ 'ach-completed' if ach.mew_status == 'Выполнено' }}">
-								<div class="achievement-info">
+						<button type="submit" class="column-content-btn">
+							<div class="column-content {{ 'ach-completed' if ach.mew_status == 'Выполнено' }}">
+								<div class="column-content-info">
 									<strong>{{ ach.mew_name }}</strong>
 									<small>{{ ach.mew_desc }}</small>
 								</div>
@@ -56,7 +55,7 @@
 						</button>
 					</form>
 				{% endfor %}
-			</dib>
+			</div>
 		</div>
 	</div>
 
