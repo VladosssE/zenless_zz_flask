@@ -65,3 +65,14 @@ class Sage_stats(db.Model):
     sage_time = db.Column(db.String(5))
     sage_location = db.Column(db.String(300))
     sage_status = db.Column(db.String(11))
+
+
+class Hdd_stats(db.Model):
+    __tablename__ = 'hdd_stats_zzz'
+    hdd_id = db.Column(db.Integer, primary_key=True)
+    hdd_chapter = db.Column(db.String(100))
+    hdd_subchapter = db.Column(db.String(50))
+    hdd_dif = db.Column(db.String(22))
+    hdd_subname = db.Column(db.String(20))
+    hdd_name = db.Column(db.String(50))
+    hdd_status = db.Column(db.String(11))
