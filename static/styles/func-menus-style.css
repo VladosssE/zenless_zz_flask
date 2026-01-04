@@ -104,6 +104,7 @@ body{
 .column h3{
 	text-align: center;
 	margin: 0 0 10px 0;
+	font-weight: 400;
 }
 
 .column-content{
@@ -180,7 +181,7 @@ body{
 	font-size: 0.8em;
 }
 
-.column-content-count.completed{
+.column-content-count.completed,{
 	background-color: green;
 	color: white;
 }
