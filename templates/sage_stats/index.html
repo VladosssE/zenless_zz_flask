@@ -20,7 +20,12 @@
 						<button type="submit" class="complete-all-button">Выполнить всё</button>
 					</form>
 				</li>
-				{% for street in streets %}
+				<li>
+					<form method="post" action="{{ url_for('sage_stats.disable_all') }}">
+						<button type="submit" class="complete-all-button">Провалить всё</button>
+					</form>
+				</li>
+				{% for street in all_certain %}
 					{% set count = summary[street] %}
 					<li class="{% if street == current_street %}active{% endif %}">
 						<a href="?street={{ street }}">
@@ -39,11 +44,8 @@
 		<div class="two-columns">
 			<div class="column">
 				<h3 style="color:white">Утро</h3>
-				<form method="post" action="{{ url_for('sage_stats.complete_day', day='Утро') }}">
-					<button type="submit" class="complete-certain-button">Выполнить все утренние достижения</button>
-				</form>
-				{% for ach in sage if ach.sage_time == 'Утро' and (not current_street or ach.sage_street == current_street) %}
-					<form method="post" action="{{ url_for('sage_stats.update_sage') }}">
+				{% for ach in all_data if ach.sage_time == 'Утро' and (not current_street or ach.sage_street == current_street) %}
+					<form method="post" action="{{ url_for('sage_stats.update_status') }}">
 						<input type="hidden" name="sage_id" value="{{ ach.sage_id }}">
 						<button type="submit" class="column-content-btn">
 							<div class="column-content {{ 'ach-completed' if ach.sage_status == 'Получено' }}">
@@ -61,11 +63,8 @@
 			</div>
 			<div class="column">
 				<h3 style="color:white">День</h3>
-				<form method="post" action="{{ url_for('sage_stats.complete_day', day='День') }}">
-					<button type="submit" class="complete-certain-button">Выполнить все дневные достижения</button>
-				</form>
-				{% for ach in sage if ach.sage_time == 'День' and (not current_street or ach.sage_street == current_street) %}
-					<form method="post" action="{{ url_for('sage_stats.update_sage') }}">
+				{% for ach in all_data if ach.sage_time == 'День' and (not current_street or ach.sage_street == current_street) %}
+					<form method="post" action="{{ url_for('sage_stats.update_status') }}">
 						<input type="hidden" name="sage_id" value="{{ ach.sage_id }}">
 						<button type="submit" class="column-content-btn">
 							<div class="column-content {{ 'ach-completed' if ach.sage_status == 'Получено' }}">
@@ -83,11 +82,8 @@
 			</div>
 			<div class="column">
 				<h3 style="color:white">Вечер</h3>
-				<form method="post" action="{{ url_for('sage_stats.complete_day', day='Вечер') }}">
-					<button type="submit" class="complete-certain-button">Выполнить все вечерние достижения</button>
-				</form>
-				{% for ach in sage if ach.sage_time == 'Вечер' and (not current_street or ach.sage_street == current_street) %}
-					<form method="post" action="{{ url_for('sage_stats.update_sage') }}">
+				{% for ach in all_data if ach.sage_time == 'Вечер' and (not current_street or ach.sage_street == current_street) %}
+					<form method="post" action="{{ url_for('sage_stats.update_status') }}">
 						<input type="hidden" name="sage_id" value="{{ ach.sage_id }}">
 						<button type="submit" class="column-content-btn">
 							<div class="column-content {{ 'ach-completed' if ach.sage_status == 'Получено' }}">
@@ -105,11 +101,8 @@
 			</div>
 			<div class="column">
 				<h3 style="color:white">Ночь</h3>
-				<form method="post" action="{{ url_for('sage_stats.complete_day', day='Ночь') }}">
-					<button type="submit" class="complete-certain-button">Выполнить все ночные достижения</button>
-				</form>
-				{% for ach in sage if ach.sage_time == 'Ночь' and (not current_street or ach.sage_street == current_street) %}
-					<form method="post" action="{{ url_for('sage_stats.update_sage') }}">
+				{% for ach in all_data if ach.sage_time == 'Ночь' and (not current_street or ach.sage_street == current_street) %}
+					<form method="post" action="{{ url_for('sage_stats.update_status') }}">
 						<input type="hidden" name="sage_id" value="{{ ach.sage_id }}">
 						<button type="submit" class="column-content-btn">
 							<div class="column-content {{ 'ach-completed' if ach.sage_status == 'Получено' }}">

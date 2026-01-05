@@ -34,20 +34,20 @@ def create_app():
     @app.route("/")
     def index():
         total_stats = GodfingerService.total_completed()
-        games_list = GodfingerService.get_all_games()
-        games_summary = GodfingerService.achievements_summary()
+        games_list = GodfingerService.get_all_groups()
+        games_summary = GodfingerService.summary()
 
         total_mewmew = MewmewService.total_completed()
-        mewmew_list = MewmewService.get_all_streets()
-        streets_summary = MewmewService.streets_summary()
+        mewmew_list = MewmewService.get_all_groups()
+        streets_summary = MewmewService.summary()
 
         total_sage = SageService.total_completed()
-        sage_list = SageService.get_all_streets()
-        sage_summary = SageService.streets_summary()
+        sage_list = SageService.get_all_groups()
+        sage_summary = SageService.summary()
 
         total_hdd = HddService.total_completed()
-        hdd_list = HddService.get_all_chapters()
-        hdd_summary = HddService.chapters_summary()
+        hdd_list = HddService.get_all_groups()
+        hdd_summary = HddService.summary()
         
         return render_template(
             "base.html",

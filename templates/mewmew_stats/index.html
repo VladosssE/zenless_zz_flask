@@ -20,7 +20,12 @@
 						<button type="submit" class="complete-all-button">Выполнить всё</button>
 					</form>
 				</li>
-				{% for street in streets %}
+				<li>
+					<form method="post" action="{{ url_for('mewmew_stats.disable_all') }}">
+						<button type="submit" class="complete-all-button">Провалить всё</button>
+					</form>
+				</li>
+				{% for street in all_certain %}
 					{% set count = summary[street] %}
 					<li class="{% if street == current_street %}active{% endif %}">
 						<a href="?street={{ street }}">
@@ -39,8 +44,8 @@
 
 		<div class="one-columns">
 			<div class="column">
-				{% for ach in mewmew if not current_street or ach.mew_street == current_street %}
-					<form method="post" action="{{ url_for('mewmew_stats.update_mewmew') }}">
+				{% for ach in all_data if not current_street or ach.mew_street == current_street %}
+					<form method="post" action="{{ url_for('mewmew_stats.update_status') }}">
 						<input type="hidden" name="mew_id" value="{{ ach.mew_id }}">
 						<button type="submit" class="column-content-btn">
 							<div class="column-content {{ 'ach-completed' if ach.mew_status == 'Выполнено' }}">

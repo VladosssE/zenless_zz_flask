@@ -20,7 +20,12 @@
 						<button type="submit" class="complete-all-button">Выполнить всё</button>
 					</form>
 				</li>
-				{% for chapter in getall %}
+				<li>
+					<form method="post" action="{{ url_for('hdd_stats.disable_all') }}">
+						<button type="submit" class="complete-all-button">Провалить всё</button>
+					</form>
+				</li>
+				{% for chapter in all_certain %}
 					{% set count = summary[chapter] %}
 					<li class="{% if chapter == current %}active{% endif %}">
 						<a href="?chapter={{ chapter }}">
@@ -39,8 +44,8 @@
 		<div class="three-columns">
 			<div class="column">
 				<h3 style="color:white">Основная линия</h3>
-				{% for ach in listing if ach.hdd_subchapter == 'Основная линия' and (not current or ach.hdd_chapter == current) %}
-					<form method="post" action="{{ url_for('hdd_stats.update_hdd') }}">
+				{% for ach in all_data if ach.hdd_subchapter == 'Основная линия' and (not current or ach.hdd_chapter == current) %}
+					<form method="post" action="{{ url_for('hdd_stats.update_status') }}">
 						<input type="hidden" name="hdd_id" value="{{ ach.hdd_id }}">
 						<button type="submit" class="column-content-btn">
 							<div class="column-content {{ 'ach-completed' if ach.hdd_status == 'Всё собрано' }}">
@@ -63,8 +68,8 @@
 			</div>
 			<div class="column">
 				<h3 style="color:white">Боевые заказы</h3>
-				{% for ach in listing if ach.hdd_subchapter == 'Боевые заказы' and (not current or ach.hdd_chapter == current) %}
-					<form method="post" action="{{ url_for('hdd_stats.update_hdd') }}">
+				{% for ach in all_data if ach.hdd_subchapter == 'Боевые заказы' and (not current or ach.hdd_chapter == current) %}
+					<form method="post" action="{{ url_for('hdd_stats.update_status') }}">
 						<input type="hidden" name="hdd_id" value="{{ ach.hdd_id }}">
 						<button type="submit" class="column-content-btn">
 							<div class="column-content {{ 'ach-completed' if ach.hdd_status == 'Всё собрано' }}">
@@ -73,6 +78,7 @@
 										{% if ach.hdd_subname == 'Бой' %}color: red;
 										{% elif ach.hdd_subname == 'Яростная битва' %}color: darkred;
 										{% elif ach.hdd_subname == 'Ралли' %}color: violet;
+										{% elif ach.hdd_subname == 'Штурм' %}color: maroon;
 										{% endif %}
 									">{{ ach.hdd_subname }}</strong>
 									<small>{{ ach.hdd_name }}</small>
@@ -87,8 +93,8 @@
 			</div>
 			<div class="column">
 				<h3 style="color:white">Исследование</h3>
-				{% for ach in listing if ach.hdd_subchapter == 'Исследование' and (not current or ach.hdd_chapter == current) %}
-					<form method="post" action="{{ url_for('hdd_stats.update_hdd') }}">
+				{% for ach in all_data if ach.hdd_subchapter == 'Исследование' and (not current or ach.hdd_chapter == current) %}
+					<form method="post" action="{{ url_for('hdd_stats.update_status') }}">
 						<input type="hidden" name="hdd_id" value="{{ ach.hdd_id }}">
 						<button type="submit" class="column-content-btn">
 							<div class="column-content {{ 'ach-completed' if ach.hdd_status == 'Всё собрано' }}">
