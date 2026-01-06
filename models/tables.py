@@ -45,7 +45,6 @@ class Godfinger_stats(db.Model):
     godfinger_medal_icon = db.Column(db.String(125))
     godfinger_ach_name = db.Column(db.String(150))
     godfinger_ach_desc = db.Column(db.String(400))
-    godfinger_award = db.Column(db.Integer)
     godfinger_status = db.Column(db.String(12))
 
 
@@ -84,3 +83,11 @@ class Video_stats(db.Model):
     video_path = db.Column(db.String(25))
     video_chapter = db.Column(db.String(50))
     video_status = db.Column(db.String(11))
+
+
+class Friends_stats(db.Model):
+    __tablename__ = 'friends_stats_zzz'
+    friends_id = db.Column(db.Integer, primary_key=True)
+    friends_fraction = db.Column(db.String(100))
+    friends_name = db.Column(db.String(100))
+    friends_status = db.Column(db.String(20))

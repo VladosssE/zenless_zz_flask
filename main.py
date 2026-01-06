@@ -14,6 +14,8 @@ from services.sage_stats_service import SageService
 from services.hdd_stats_service import HddService
 from routes.video_stats import bp as video_stats_bp
 from services.video_stats_service import VideoService
+from routes.friends_stats import bp as friends_stats_bp
+from services.friends_stats_service import FriendsService
 
 def create_app():
     app = Flask(__name__, template_folder="templates", static_folder="static")
@@ -33,6 +35,7 @@ def create_app():
     app.register_blueprint(sage_stats_bp)
     app.register_blueprint(hdd_stats_bp)
     app.register_blueprint(video_stats_bp)
+    app.register_blueprint(friends_stats_bp)
     
     @app.route("/")
     def index():
@@ -55,6 +58,10 @@ def create_app():
         total_video = VideoService.total_completed()
         video_list = VideoService.get_all_groups()
         video_summary = VideoService.summary()
+
+        total_friends = FriendsService.total_completed()
+        friends_list = FriendsService.get_all_groups()
+        friends_summary = FriendsService.summary()
         
         return render_template(
             "base.html",
@@ -73,6 +80,9 @@ def create_app():
             total_video=total_video,
             video_list=[g[0] for g in video_list],
             video_summary=video_summary,
+            total_friends=total_friends,
+            friends_list=[g[0] for g in friends_list],
+            friends_summary=friends_summary,
         )
 
     return app

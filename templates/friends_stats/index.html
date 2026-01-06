@@ -3,33 +3,33 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Видеоархив</title>
+    <title>Партнёры</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/func-menus-style.css') }}">
-    <script src="{{ url_for('static', filename='js/video.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/friends.js') }}"></script>
 </head>
 <body>
-{% set current_video = request.args.get('video') %}
+{% set current_friends = request.args.get('friends') %}
     <div class="sidebar">
-        <h2>Разделы</h2>
+        <h2>Фракции</h2>
         <ul class="sidebar-list">
             <li class="exit-button">
                 <a href="{{ url_for('index') }}">В главное меню</a>
             </li>
             <li>
-                <form method="post" action="{{ url_for('video_stats.complete_all') }}">
+                <form method="post" action="{{ url_for('friends_stats.complete_all') }}">
                     <button type="submit" class="complete-all-button">Выполнить всё</button>
                 </form>
             </li>
             <li>
-                <form method="post" action="{{ url_for('video_stats.disable_all') }}">
+                <form method="post" action="{{ url_for('friends_stats.disable_all') }}">
                     <button type="submit" class="complete-all-button">Провалить всё</button>
                 </form>
             </li>
-            {% for video in all_certain %}
-                {% set count = summary[video] %}
-                    <li class="{% if video == current_video %}active{% endif %}">
-                        <a href="?video={{ video }}">
-                            {{ video }}
+            {% for friends in all_certain %}
+                {% set count = summary[friends] %}
+                    <li class="{% if friends == current_friends %}active{% endif %}">
+                        <a href="?friends={{ friends }}">
+                            {{ friends }}
                             <span class="column-content-count {% if count.completed == count.total %}completed{% endif %}">
                                 {{ count.completed }} / {{ count.total }}
                             </span>
@@ -40,20 +40,20 @@
     </div>
 
     <div class="content">
-        <h1 class="main-panel-title">Видеоархив</h1>
+        <h1 class="main-panel-title">Партнёры</h1>
 
         <div class="one-columns">
             <div class="column">
-                {% for ach in all_data if not current_video or ach.video_path == current_video %}
-                    <form method="post" action="{{ url_for('video_stats.update_status') }}">
-                        <input type="hidden" name="video_id" value="{{ ach.video_id }}">
+                {% for ach in all_data if not current_friends or ach.friends_fraction == current_friends %}
+                    <form method="post" action="{{ url_for('friends_stats.update_status') }}">
+                        <input type="hidden" name="friends_id" value="{{ ach.friends_id }}">
                         <button type="submit" class="column-content-btn">
-                            <div class="column-content {{ 'ach-completed' if ach.video_status == 'Пройдено' }}">
+                            <div class="column-content {{ 'ach-completed' if ach.friends_status == 'Максимальное доверие' }}">
                                 <div class="column-content-info">
-                                    <strong>{{ ach.video_chapter }}</strong>
+                                    <strong>{{ ach.friends_name }}</strong>
                                 </div>
-                                <span class="status {{ 'completed' if ach.video_status == 'Пройдено' else 'not-completed' }}">
-                                    {{ ach.video_status }}
+                                <span class="status {{ 'completed' if ach.friends_status == 'Максимальное доверие' else 'not-completed' }}">
+                                    {{ ach.friends_status }}
                                 </span>
                             </div>
                         </button>

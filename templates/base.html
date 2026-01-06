@@ -29,6 +29,9 @@
 		<a class="left-panel-button" href="{{ url_for('video_stats.list_data') }}">
 			Видеоархив ({{ total_video.completed }}/{{ total_video.total }})
 		</a>
+		<a class="left-panel-button" href="{{ url_for('friends_stats.list_data') }}">
+			Партнёры ({{ total_friends.completed }}/{{ total_friends.total }})
+		</a>
 		
 	</div>
 	<div class="main-panel">
@@ -97,6 +100,20 @@
 						{% set count = video_summary[video] %}
 						<li class="info-list">
 							<span class="info-name">{{ video }}</span>
+							<span class="info-stats {% if count.completed == count.total %}completed{% endif %}">
+								{{ count.completed }} / {{ count.total }}
+							</span>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="main-card">
+				<h2 class="main-card-title">Партнёры</h2>
+				<ul class="main-card-info-list">
+					{% for friends in friends_list %}
+						{% set count = friends_summary[friends] %}
+						<li class="info-list">
+							<span class="info-name">{{ friends }}</span>
 							<span class="info-stats {% if count.completed == count.total %}completed{% endif %}">
 								{{ count.completed }} / {{ count.total }}
 							</span>
