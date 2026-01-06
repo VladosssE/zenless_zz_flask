@@ -12,6 +12,8 @@ from services.godfinger_stats_service import GodfingerService
 from services.mewmew_stats_service import MewmewService
 from services.sage_stats_service import SageService
 from services.hdd_stats_service import HddService
+from routes.video_stats import bp as video_stats_bp
+from services.video_stats_service import VideoService
 
 def create_app():
     app = Flask(__name__, template_folder="templates", static_folder="static")
@@ -30,6 +32,7 @@ def create_app():
     app.register_blueprint(mew_stats_bp)
     app.register_blueprint(sage_stats_bp)
     app.register_blueprint(hdd_stats_bp)
+    app.register_blueprint(video_stats_bp)
     
     @app.route("/")
     def index():
@@ -48,6 +51,10 @@ def create_app():
         total_hdd = HddService.total_completed()
         hdd_list = HddService.get_all_groups()
         hdd_summary = HddService.summary()
+
+        total_video = VideoService.total_completed()
+        video_list = VideoService.get_all_groups()
+        video_summary = VideoService.summary()
         
         return render_template(
             "base.html",
@@ -63,6 +70,9 @@ def create_app():
             total_hdd=total_hdd,
             hdd_list=[z[0] for z in hdd_list],
             hdd_summary=hdd_summary,
+            total_video=total_video,
+            video_list=[g[0] for g in video_list],
+            video_summary=video_summary,
         )
 
     return app
