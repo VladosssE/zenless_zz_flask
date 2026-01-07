@@ -15,12 +15,10 @@
 				<li class="exit-button">
 					<a href="{{ url_for('index') }}">В главное меню</a>
 				</li>
-				<li>
+				<li class="complete-buttons">
 					<form method="post" action="{{ url_for('hdd_stats.complete_all') }}">
 						<button type="submit" class="complete-all-button">Выполнить всё</button>
 					</form>
-				</li>
-				<li>
 					<form method="post" action="{{ url_for('hdd_stats.disable_all') }}">
 						<button type="submit" class="complete-all-button">Провалить всё</button>
 					</form>
@@ -49,13 +47,9 @@
 						<input type="hidden" name="hdd_id" value="{{ ach.hdd_id }}">
 						<button type="submit" class="column-content-btn">
 							<div class="column-content {{ 'ach-completed' if ach.hdd_status == 'Всё собрано' }}">
+								<img src="{{ url_for('static', filename='icons/' ~ ach.hdd_url) }}">
 								<div class="column-content-info">
-									<strong style="
-										{% if ach.hdd_dif == 'Обычный режим' %}color: darkorange;
-										{% elif ach.hdd_dif == 'Трудный режим' %}color: darkred;
-										{% elif ach.hdd_dif == 'Мониторный режим' %}color: darkblue;
-										{% endif %}
-									">{{ ach.hdd_dif }} / {{ ach.hdd_subname }}</strong>
+									<strong>{{ ach.hdd_dif }} / {{ ach.hdd_subname }}</strong>
 									<small>{{ ach.hdd_name }}</small>
 								</div>
 								<span class="status {{ 'completed' if ach.hdd_status == 'Всё собрано' else 'not-completed' }}">
@@ -73,14 +67,9 @@
 						<input type="hidden" name="hdd_id" value="{{ ach.hdd_id }}">
 						<button type="submit" class="column-content-btn">
 							<div class="column-content {{ 'ach-completed' if ach.hdd_status == 'Всё собрано' }}">
+								<img src="{{ url_for('static', filename='icons/' ~ ach.hdd_url) }}">
 								<div class="column-content-info">
-									<strong style="
-										{% if ach.hdd_subname == 'Бой' %}color: red;
-										{% elif ach.hdd_subname == 'Яростная битва' %}color: darkred;
-										{% elif ach.hdd_subname == 'Ралли' %}color: violet;
-										{% elif ach.hdd_subname == 'Штурм' %}color: maroon;
-										{% endif %}
-									">{{ ach.hdd_subname }}</strong>
+									<strong>{{ ach.hdd_subname }}</strong>
 									<small>{{ ach.hdd_name }}</small>
 								</div>
 								<span class="status {{ 'completed' if ach.hdd_status == 'Всё собрано' else 'not-completed' }}">
@@ -98,14 +87,9 @@
 						<input type="hidden" name="hdd_id" value="{{ ach.hdd_id }}">
 						<button type="submit" class="column-content-btn">
 							<div class="column-content {{ 'ach-completed' if ach.hdd_status == 'Всё собрано' }}">
+								<img src="{{ url_for('static', filename='icons/' ~ ach.hdd_url) }}">
 								<div class="column-content-info">
-									<strong style="
-										{% if ach.hdd_subname == 'Исследование' %}color: darkblue;
-										{% elif ach.hdd_subname == 'Особое' %}color: blue;
-										{% elif ach.hdd_subname == 'Головоломка' %}color: blue;
-										{% else %}color: black;
-										{% endif %}
-									">{{ ach.hdd_subname }}</strong>
+									<strong>{{ ach.hdd_subname }}</strong>
 									<small>{{ ach.hdd_name }}</small>
 								</div>
 								<span class="status {{ 'completed' if ach.hdd_status == 'Всё собрано' else 'not-completed' }}">

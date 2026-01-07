@@ -62,6 +62,7 @@ class Sage_stats(db.Model):
     sage_id = db.Column(db.Integer, primary_key=True)
     sage_street = db.Column(db.String(100))
     sage_time = db.Column(db.String(5))
+    sage_url = db.Column(db.String(15))
     sage_location = db.Column(db.String(300))
     sage_status = db.Column(db.String(11))
 
@@ -73,6 +74,7 @@ class Hdd_stats(db.Model):
     hdd_subchapter = db.Column(db.String(50))
     hdd_dif = db.Column(db.String(22))
     hdd_subname = db.Column(db.String(20))
+    hdd_url = db.Column(db.String(15))
     hdd_name = db.Column(db.String(50))
     hdd_status = db.Column(db.String(11))
 
@@ -91,3 +93,12 @@ class Friends_stats(db.Model):
     friends_fraction = db.Column(db.String(100))
     friends_name = db.Column(db.String(100))
     friends_status = db.Column(db.String(20))
+
+
+class Hollow_stats(db.Model):
+    __tablename__ = 'hollow_stats_zzz'
+    hollow_id = db.Column(db.Integer, primary_key=True)
+    hollow_name = db.Column(db.String(50))
+    hollow_location = db.Column(db.String(50))
+    hollow_subname = db.Column(db.String(50))
+    hollow_status = db.Column(db.String(11))

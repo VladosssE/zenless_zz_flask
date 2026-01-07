@@ -15,12 +15,10 @@
 				<li class="exit-button">
 					<a href="{{ url_for('index') }}">В главное меню</a>
 				</li>
-				<li>
+				<li class="complete-buttons">
 					<form method="post" action="{{ url_for('godfinger_stats.complete_all') }}">
 						<button type="submit" class="complete-all-button">Выполнить всё</button>
 					</form>
-				</li>
-				<li>
 					<form method="post" action="{{ url_for('godfinger_stats.disable_all') }}">
 						<button type="submit" class="complete-all-button">Провалить всё</button>
 					</form>
@@ -44,12 +42,12 @@
 		<div class="three-columns">
 			<div class="column">
 				<h3 style="color:white">Бронза</h3>
-				{% for ach in all_data if ach.godfinger_medal_icon == 'bronze_medal.png' and (not current_game or ach.godfinger_game == current_game) %}
+				{% for ach in all_data if ach.godfinger_medal_icon == 'bronze.png' and (not current_game or ach.godfinger_game == current_game) %}
 					<form method="post" action="{{ url_for('godfinger_stats.update_status') }}">
 						<input type="hidden" name="godfinger_id" value="{{ ach.godfinger_id }}">
 						<button type="submit" class="column-content-btn">
 							<div class="column-content {{ 'ach-completed' if ach.godfinger_status == 'Выполнено' }}">
-								<img src="{{ url_for('static', filename='icons/godfinger/' ~ ach.godfinger_medal_icon) }}">
+								<img src="{{ url_for('static', filename='icons/' ~ ach.godfinger_medal_icon) }}">
 								<div class="column-content-info">
 									<strong>{{ ach.godfinger_ach_name }}</strong>
 									<small>{{ ach.godfinger_ach_desc }}</small>
@@ -64,12 +62,12 @@
 			</div>
 			<div class="column">
 				<h3 style="color:white">Серебро</h3>
-				{% for ach in all_data if ach.godfinger_medal_icon == 'silver_medal.png' and (not current_game or ach.godfinger_game == current_game) %}
+				{% for ach in all_data if ach.godfinger_medal_icon == 'silver.png' and (not current_game or ach.godfinger_game == current_game) %}
 					<form method="post" action="{{ url_for('godfinger_stats.update_status') }}">
 						<input type="hidden" name="godfinger_id" value="{{ ach.godfinger_id }}">
 						<button type="submit" class="column-content-btn">
 							<div class="column-content {{ 'ach-completed' if ach.godfinger_status == 'Выполнено' }}">
-								<img src="{{ url_for('static', filename='icons/godfinger/' ~ ach.godfinger_medal_icon) }}">
+								<img src="{{ url_for('static', filename='icons/' ~ ach.godfinger_medal_icon) }}">
 								<div class="column-content-info">
 									<strong>{{ ach.godfinger_ach_name }}</strong>
 									<small>{{ ach.godfinger_ach_desc }}</small>
@@ -84,12 +82,12 @@
 			</div>
 			<div class="column">
 				<h3 style="color:white">Золото</h3>
-				{% for ach in all_data if ach.godfinger_medal_icon == 'gold_medal.png' and (not current_game or ach.godfinger_game == current_game) %}
+				{% for ach in all_data if ach.godfinger_medal_icon == 'gold.png' and (not current_game or ach.godfinger_game == current_game) %}
 					<form method="post" action="{{ url_for('godfinger_stats.update_status') }}">
 						<input type="hidden" name="godfinger_id" value="{{ ach.godfinger_id }}">
 						<button type="submit" class="column-content-btn">
 							<div class="column-content {{ 'ach-completed' if ach.godfinger_status == 'Выполнено' }}">
-								<img src="{{ url_for('static', filename='icons/godfinger/' ~ ach.godfinger_medal_icon) }}">
+								<img src="{{ url_for('static', filename='icons/' ~ ach.godfinger_medal_icon) }}">
 								<div class="column-content-info">
 									<strong>{{ ach.godfinger_ach_name }}</strong>
 									<small>{{ ach.godfinger_ach_desc }}</small>

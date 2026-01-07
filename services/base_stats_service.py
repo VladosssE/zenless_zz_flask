@@ -1,4 +1,5 @@
 from extensions import db
+from collections import defaultdict
 
 class BaseStatsService:
     model = None

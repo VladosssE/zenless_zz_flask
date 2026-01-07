@@ -15,12 +15,10 @@
 				<li class="exit-button">
 					<a href="{{ url_for('index') }}">В главное меню</a>
 				</li>
-				<li>
+				<li class="complete-buttons">
 					<form method="post" action="{{ url_for('mewmew_stats.complete_all') }}">
 						<button type="submit" class="complete-all-button">Выполнить всё</button>
 					</form>
-				</li>
-				<li>
 					<form method="post" action="{{ url_for('mewmew_stats.disable_all') }}">
 						<button type="submit" class="complete-all-button">Провалить всё</button>
 					</form>

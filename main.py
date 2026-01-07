@@ -1,13 +1,12 @@
 from flask import Flask, render_template, session
 from extensions import db
-from models.tables import Bangboo_stats, Character_stats, Godfinger_stats, Sage_stats, Hdd_stats
 from routes.bangboo_stats import bp as bangboo_stats_bp
 from routes.character_stats import bp as character_stats_bp
 from routes.godfinger_stats import bp as godfinger_stats_bp
 from routes.mewmew_stats import bp as mew_stats_bp
 from routes.sage_stats import bp as sage_stats_bp
 from routes.hdd_stats import bp as hdd_stats_bp
-from seeds.seed import seed_all
+from seeds.seed_all import seed_all
 from services.godfinger_stats_service import GodfingerService
 from services.mewmew_stats_service import MewmewService
 from services.sage_stats_service import SageService
@@ -16,6 +15,8 @@ from routes.video_stats import bp as video_stats_bp
 from services.video_stats_service import VideoService
 from routes.friends_stats import bp as friends_stats_bp
 from services.friends_stats_service import FriendsService
+from routes.hollow_stats import bp as hollow_stats_bp
+from services.hollow_stats_service import HollowService
 
 def create_app():
     app = Flask(__name__, template_folder="templates", static_folder="static")
@@ -36,6 +37,7 @@ def create_app():
     app.register_blueprint(hdd_stats_bp)
     app.register_blueprint(video_stats_bp)
     app.register_blueprint(friends_stats_bp)
+    app.register_blueprint(hollow_stats_bp)
     
     @app.route("/")
     def index():
@@ -63,6 +65,10 @@ def create_app():
         friends_list = FriendsService.get_all_groups()
         friends_summary = FriendsService.summary()
         
+        total_hollow = HollowService.total_completed()
+        hollow_list = HollowService.get_all_groups()
+        hollow_summary = HollowService.summary()
+        
         return render_template(
             "base.html",
             total_stats=total_stats,
@@ -83,6 +89,9 @@ def create_app():
             total_friends=total_friends,
             friends_list=[g[0] for g in friends_list],
             friends_summary=friends_summary,
+            total_hollow=total_hollow,
+            hollow_list=[g[0] for g in hollow_list],
+            hollow_summary=hollow_summary,
         )
 
     return app
