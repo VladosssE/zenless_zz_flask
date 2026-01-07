@@ -22,6 +22,9 @@
 					<form method="post" action="{{ url_for('hdd_stats.disable_all') }}">
 						<button type="submit" class="complete-all-button">Провалить всё</button>
 					</form>
+					<form method="get" action="{{ url_for('hdd_stats.list_data') }}">
+						<button type="submit" class="complete-all-button">Вывести все записи</button>
+					</form>
 				</li>
 				{% for chapter in all_certain %}
 					{% set count = summary[chapter] %}
