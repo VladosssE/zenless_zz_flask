@@ -57,36 +57,41 @@ body{
 
 .main-panel{
 	width: 100%;
-	background: white;
+	background: #f4f4f9;
 	display: flex;
 	flex-direction: column;
 	position: relative;
 	margin: 0 0 0 5px;
+	padding-bottom: 20px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.2);
+	border-radius: 8px;
 }
 
 .main-panel-title{
+	font-size: 30px;
 	margin: 20px 0 0 0;
-	padding: 0 0 10px 0;
+	padding-bottom: 10px;
 	text-align: center;
+	font-family: mr_norwesterG, Courier;
+	color: black;
 }
 
 .main-container{
-	padding: 20px;
+	padding: 5px;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	gap: 10px;
+	gap: 5px;
 }
 
 .main-card{
-	border: 2px dashed gray;
-	padding: 10px;
-	align-items: center;
+	border: 1px solid gray;
+	padding: 5px;
 }
 
 .main-card-title{
-	font-size: 24px;
+	font-size: 28px;
 	text-align: center;
-	margin: 5px 0 10px 0;
+	margin: 5px 0 15px 0;
 	font-weight: 400;
 	color: darkblue;
 }
@@ -100,22 +105,30 @@ body{
 .info-list{
 	display: flex;
 	justify-content: space-between;
-	padding: 10px;
+	padding: 5px;
 	border-bottom: 1px dashed gray;
+	transition: 0.2s;
+}
+
+.info-list:hover{
+	background: black;
+	color: white;
 }
 
 .info-name{
 	padding: 5px;
+	font-weight: 400;
 }
 
 .info-stats{
 	padding: 5px;
-	color: black;
-	width: 15%;
+	color: white;
+	min-width: 60px;
 	text-align: center;
+	background: red;
 }
 
-.info-stats.completed {
+.info-stats.completed{
 	background: green;
 	color: white;
 }

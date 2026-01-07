@@ -96,6 +96,11 @@ body{
 	grid-template-columns: repeat(4, 1fr);
 }
 
+.dynamic-columns{
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
 .column{
 	border: 2px dashed gray;
 	padding: 10px;
@@ -110,11 +115,10 @@ body{
 .column-content{
 	display: flex;
 	align-items: center;
-	margin-bottom: 8px;
 	padding: 8px;
-	border-radius: 6px;
 	background: white;
 	transition: 0.1s;
+	border-bottom: 1px solid gray;
 }
 
 .column-content:hover{
@@ -205,16 +209,24 @@ body{
 }
 
 .complete-all-button{
-	background: orange;
+	background: darkgray;
 	width: 100%;
 	border: none;
 	font-family: mr_norwesterG, Courier;
 	cursor: pointer;
-	padding: 10px 20px;
+	padding: 10px 10px;
 	transition: 0.1s;
 }
 
 .complete-all-button:hover{
 	color: white;
-	background: green;
+	background: black;
+}
+
+li.complete-buttons {
+	display: flex;
+}
+
+li.complete-buttons form {
+	flex: 1;
 }
