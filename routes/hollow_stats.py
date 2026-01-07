@@ -1,5 +1,5 @@
 from services.hollow_stats_service import HollowService
-from models.tables import Hollow_stats
+from models.table_hollow import Hollow_stats
 from .stats_func import create_stats_blueprint
 
 bp = create_stats_blueprint(

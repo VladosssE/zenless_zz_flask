@@ -1,5 +1,5 @@
 from extensions import db
-from models.tables import Sage_stats
+from models.table_sage import Sage_stats
 
 def seed_sage():
     coins = [

@@ -1,4 +1,4 @@
-from models.tables import Sage_stats
+from models.table_sage import Sage_stats
 from .base_stats_service import BaseStatsService
 
 class SageService(BaseStatsService):

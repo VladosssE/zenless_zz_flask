@@ -1,0 +1,26 @@
+from extensions import db
+
+class Character_stats(db.Model):
+    __tablename__ = 'characters_stats_zzz'
+    character_id = db.Column(db.Integer, primary_key=True)
+    character_name = db.Column(db.String(250))
+    character_type = db.Column(db.String(250))
+    character_class = db.Column(db.String(1))
+    character_level = db.Column(db.Integer)
+    character_mental_picture = db.Column(db.Integer)
+    character_skill_1 = db.Column(db.Integer)
+    character_skill_2 = db.Column(db.Integer)
+    character_skill_3 = db.Column(db.Integer)
+    character_skill_4 = db.Column(db.Integer)
+    character_skill_5 = db.Column(db.Integer)
+    character_skill_strength = db.Column(db.String(1))
+    character_disk_1 = db.Column(db.Integer)
+    character_disk_2 = db.Column(db.Integer)
+    character_disk_3 = db.Column(db.Integer)
+    character_disk_4 = db.Column(db.Integer)
+    character_disk_5 = db.Column(db.Integer)
+    character_disk_6 = db.Column(db.Integer)
+    character_amplificator_unique = db.Column(db.String(3))
+    character_amplificator_level = db.Column(db.Integer)
+    character_amplificator_stars = db.Column(db.Integer)
+    character_image_url = db.Column(db.String(100))

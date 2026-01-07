@@ -1,4 +1,4 @@
-from models.tables import Video_stats
+from models.table_video import Video_stats
 from .base_stats_service import BaseStatsService
 
 class VideoService(BaseStatsService):

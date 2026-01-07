@@ -1,5 +1,5 @@
 from services.hdd_stats_service import HddService
-from models.tables import Hdd_stats
+from models.table_hdd import Hdd_stats
 from .stats_func import create_stats_blueprint
 
 bp = create_stats_blueprint(

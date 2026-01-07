@@ -1,5 +1,5 @@
 from services.mewmew_stats_service import MewmewService
-from models.tables import Mewmew_stats
+from models.table_mewmew import Mewmew_stats
 from .stats_func import create_stats_blueprint
 
 bp = create_stats_blueprint(

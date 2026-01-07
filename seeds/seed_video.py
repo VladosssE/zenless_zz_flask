@@ -1,5 +1,5 @@
 from extensions import db
-from models.tables import Video_stats
+from models.table_video import Video_stats
 
 def seed_video():
     video = [

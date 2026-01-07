@@ -1,4 +1,4 @@
-from models.tables import Friends_stats
+from models.table_friends import Friends_stats
 from .base_stats_service import BaseStatsService
 
 class FriendsService(BaseStatsService):

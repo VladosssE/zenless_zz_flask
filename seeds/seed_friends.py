@@ -1,5 +1,5 @@
 from extensions import db
-from models.tables import Friends_stats
+from models.table_friends import Friends_stats
 
 def seed_friends():
     friends = [

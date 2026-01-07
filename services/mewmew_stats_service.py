@@ -1,4 +1,4 @@
-from models.tables import Mewmew_stats
+from models.table_mewmew import Mewmew_stats
 from .base_stats_service import BaseStatsService
 
 class MewmewService(BaseStatsService):

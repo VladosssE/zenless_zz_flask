@@ -1,5 +1,5 @@
 from extensions import db
-from models.tables import Godfinger_stats
+from models.table_godfinger import Godfinger_stats
 
 def seed_godfinger():
     godfingers = [

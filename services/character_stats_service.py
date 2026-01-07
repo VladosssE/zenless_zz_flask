@@ -1,5 +1,5 @@
 from extensions import db
-from models.tables import Character_stats
+from models.table_characters import Character_stats
 
 class CharacterService:
 

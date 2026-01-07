@@ -1,5 +1,5 @@
 from services.godfinger_stats_service import GodfingerService
-from models.tables import Godfinger_stats
+from models.table_godfinger import Godfinger_stats
 from .stats_func import create_stats_blueprint
 
 bp = create_stats_blueprint(

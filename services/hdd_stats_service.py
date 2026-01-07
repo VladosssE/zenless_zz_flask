@@ -1,4 +1,4 @@
-from models.tables import Hdd_stats
+from models.table_hdd import Hdd_stats
 from .base_stats_service import BaseStatsService
 
 class HddService(BaseStatsService):

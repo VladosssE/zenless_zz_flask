@@ -1,4 +1,4 @@
-from models.tables import Godfinger_stats
+from models.table_godfinger import Godfinger_stats
 from .base_stats_service import BaseStatsService
 
 class GodfingerService(BaseStatsService):

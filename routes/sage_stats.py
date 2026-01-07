@@ -1,5 +1,5 @@
 from services.sage_stats_service import SageService
-from models.tables import Sage_stats
+from models.table_sage import Sage_stats
 from .stats_func import create_stats_blueprint
 
 bp = create_stats_blueprint(

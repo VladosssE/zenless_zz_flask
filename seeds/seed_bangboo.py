@@ -1,5 +1,5 @@
 from extensions import db
-from models.tables import Bangboo_stats
+from models.table_bangboo import Bangboo_stats
 
 def seed_bangboo():
     bangboos = [

@@ -1,5 +1,5 @@
 from extensions import db
-from models.tables import Hdd_stats
+from models.table_hdd import Hdd_stats
 
 def seed_hdd():
     hdd = [

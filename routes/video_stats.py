@@ -1,5 +1,5 @@
 from services.video_stats_service import VideoService
-from models.tables import Video_stats
+from models.table_video import Video_stats
 from .stats_func import create_stats_blueprint
 
 bp = create_stats_blueprint(

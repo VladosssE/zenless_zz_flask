@@ -1,7 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, jsonify
 from extensions import db
 
-
 def create_stats_blueprint(
     *,
     name,

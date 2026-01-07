@@ -1,5 +1,5 @@
 from services.friends_stats_service import FriendsService
-from models.tables import Friends_stats
+from models.table_friends import Friends_stats
 from .stats_func import create_stats_blueprint
 
 bp = create_stats_blueprint(

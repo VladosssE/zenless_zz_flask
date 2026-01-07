@@ -1,4 +1,4 @@
-from models.tables import Hollow_stats
+from models.table_hollow import Hollow_stats
 from .base_stats_service import BaseStatsService
 
 class HollowService(BaseStatsService):

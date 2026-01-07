@@ -1,5 +1,5 @@
 from extensions import db
-from models.tables import Mewmew_stats
+from models.table_mewmew import Mewmew_stats
 
 def seed_mewmew():
     mewmews = [

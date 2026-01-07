@@ -1,5 +1,5 @@
 from extensions import db
-from models.tables import Hollow_stats
+from models.table_hollow import Hollow_stats
 
 def seed_hollow():
     hollows = [
