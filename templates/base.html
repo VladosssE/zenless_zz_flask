@@ -9,32 +9,68 @@
 <body>
 	<div class="left-panel">
 		<h1 class="left-panel-title">Общее</h1>
-		<a class="left-panel-button" style="background:red; color: white;" href="{{ url_for('bangboo_stats.list_bangboo') }}">Банбу (WIP)</a>
-		<a class="left-panel-button" style="background:red; color: white;" href="{{ url_for('characters_stats.list_characters') }}">Персонажи (WIP)</a>
-		<a class="left-panel-button" href="{{ url_for('godfinger_stats.list_data') }}">
-			Годфингер ({{ total_stats.completed }}/{{ total_stats.total }})
-		</a>
-		<a class="left-panel-button" href="{{ url_for('mewmew_stats.list_data') }}">
-			Инспектор Мяучело ({{ total_mewmew.completed }}/{{ total_mewmew.total }})
-		</a>
-		<a class="left-panel-button" href="{{ url_for('sage_stats.list_data') }}">
-			Мудрец в бочке ({{ total_sage.completed }}/{{ total_sage.total }})
-		</a>
-		<a class="left-panel-button" href="{{ url_for('hdd_stats.list_data') }}">
-			H.D.D. ({{ total_hdd.completed }}/{{ total_hdd.total }})
-		</a>
-		<a class="left-panel-button" href="{{ url_for('video_stats.list_data') }}">
-			Видеоархив ({{ total_video.completed }}/{{ total_video.total }})
-		</a>
-		<a class="left-panel-button" href="{{ url_for('friends_stats.list_data') }}">
-			Партнёры ({{ total_friends.completed }}/{{ total_friends.total }})
-		</a>
-		<a class="left-panel-button" href="{{ url_for('hollow_stats.list_data') }}">
-			Каверна ({{ total_hollow.completed }}/{{ total_hollow.total }})
-		</a>
-		<a class="left-panel-button" href="{{ url_for('hollow_withered_domain_stats.list_data') }}">
-			Город увядания ({{ total_hollow_wd.completed }}/{{ total_hollow_wd.total }})
-		</a>
+		<div class="left-panel-list">
+			<li>
+				<a href="{{ url_for('bangboo_stats.list_bangboo') }}">
+					Банбу 
+					<span>(WIP)</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ url_for('characters_stats.list_characters') }}">
+					Персонажи 
+					<span>(WIP)</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ url_for('godfinger_stats.list_data') }}">
+					Годфингер
+					<span>({{ total_stats.completed }}/{{ total_stats.total }})</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ url_for('mewmew_stats.list_data') }}">
+					Инспектор Мяучело
+					<span>({{ total_mewmew.completed }}/{{ total_mewmew.total }})</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ url_for('sage_stats.list_data') }}">
+					Мудрец в бочке
+					<span>({{ total_sage.completed }}/{{ total_sage.total }})</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ url_for('hdd_stats.list_data') }}">
+					H.D.D.
+					<span>({{ total_hdd.completed }}/{{ total_hdd.total }})</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ url_for('video_stats.list_data') }}">
+					Видеоархив
+					<span>({{ total_video.completed }}/{{ total_video.total }})</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ url_for('friends_stats.list_data') }}">
+					Партнёры
+					<span>({{ total_friends.completed }}/{{ total_friends.total }})</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ url_for('hollow_stats.list_data') }}">
+					Каверна
+					<span>({{ total_hollow.completed }}/{{ total_hollow.total }})</span>
+				</a>
+			</li>
+			<li>
+				<a href="{{ url_for('hollow_withered_domain_stats.list_data') }}">
+					Город увядания
+					<span>({{ total_hollow_wd.completed }}/{{ total_hollow_wd.total }})</span>
+				</a>
+			</li>
+		</div>
 	</div>
 	<div class="main-panel">
 		<h1 class="main-panel-title">Статистика</h1>

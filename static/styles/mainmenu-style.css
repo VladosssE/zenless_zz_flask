@@ -17,16 +17,38 @@ body{
 }
 
 .left-panel{
+	width: 25%;
 	background: white;
+	padding: 20px;
+	overflow-y: auto;
+	border-right: 1px dashed black;
+}
+
+.left-panel-list{
+	padding: 0;
+	margin: 0;
+}
+
+.left-panel-list li{
+	list-style: none;
+	cursor: pointer;
+	transition: 0.1s;
+	border: 1px dashed gray;
+}
+
+.left-panel-list a{
 	display: flex;
-	flex-direction: column;
+	padding: 10px;
+	text-decoration: none;
+	color: inherit;
+	box-sizing: border-box;
+	justify-content: space-between;
 	align-items: center;
-	padding: 0 20px 0 20px;
 }
 
 .left-panel-title{
-	font-size: 30px;
-	margin: 20px 0 0 0;
+	text-align: center;
+	margin-top: 0;
 }
 
 .left-panel-sec-title{
@@ -34,37 +56,21 @@ body{
 	margin: 60px 0 0 0;
 }
 
-.left-panel-button{
-	width: 250px;
-	margin: 20px 0 0 0;
-	text-align: center;
-	font-family: mr_norwesterG, Courier;
-	background: transparent;
-	color: black;
-	padding: 10px 20px;
-	text-decoration: none;
-	transition: 0.1s;
-	cursor: pointer;
-	border: 2px dashed gray;
-	justify-content: space-between;
-}
-
-.left-panel-button:hover{
+.left-panel-list li:hover{
 	background: black;
 	color: white;
-	border: 2px dashed white;
+	border: 1px dashed white;
 }
 
 .main-panel{
-	width: 100%;
-	background: #f4f4f9;
+	width: 85%;
+	background: white;
 	display: flex;
 	flex-direction: column;
 	position: relative;
 	margin: 0 0 0 5px;
 	padding-bottom: 20px;
 	box-shadow: 0 0 10px rgba(0,0,0,0.2);
-	border-radius: 8px;
 }
 
 .main-panel-title{
