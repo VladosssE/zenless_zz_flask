@@ -45,7 +45,6 @@
 		<div class="one-columns">
 			<div class="column">
 			{% for ach in all_data if not current_hollow or ach.hollow_name == current_hollow %}
-				
 					<form method="post" action="{{ url_for('hollow_stats.update_status') }}">
 						<input type="hidden" name="hollow_id" value="{{ ach.hollow_id }}">
 						<button type="submit" class="column-content-btn">

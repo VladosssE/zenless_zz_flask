@@ -42,25 +42,22 @@
 
 	<div class="content">
 		<h1 class="main-panel-title">Партнёры</h1>
-
-		<div class="one-columns">
-			<div class="column">
-				{% for ach in all_data if not current_friends or ach.friends_fraction == current_friends %}
-					<form method="post" action="{{ url_for('friends_stats.update_status') }}">
-						<input type="hidden" name="friends_id" value="{{ ach.friends_id }}">
-						<button type="submit" class="column-content-btn">
-							<div class="column-content {{ 'ach-completed' if ach.friends_status == 'Максимальное доверие' }}">
-								<div class="column-content-info">
-									<strong>{{ ach.friends_name }}</strong>
-								</div>
-								<span class="status {{ 'completed' if ach.friends_status == 'Максимальное доверие' else 'not-completed' }}">
-									{{ ach.friends_status }}
-								</span>
+		<div class="four-columns">
+			{% for ach in all_data if not current_friends or ach.friends_fraction == current_friends %}
+				<form method="post" action="{{ url_for('friends_stats.update_status') }}">
+					<input type="hidden" name="friends_id" value="{{ ach.friends_id }}">
+					<button type="submit" class="column-content-btn">
+						<div class="column-content {{ 'ach-completed' if ach.friends_status == 'Максимальное доверие' }}">
+							<div class="column-content-info">
+								<strong>{{ ach.friends_name }}</strong>
 							</div>
-						</button>
-					</form>
-				{% endfor %}
-			</div>
+							<span class="status {{ 'completed' if ach.friends_status == 'Максимальное доверие' else 'not-completed' }}">
+								{{ ach.friends_status }}
+							</span>
+						</div>
+					</button>
+				</form>
+			{% endfor %}
 		 </div>
 	 </div>
 </body>

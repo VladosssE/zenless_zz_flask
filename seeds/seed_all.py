@@ -7,9 +7,10 @@ from .seed_hdd import seed_hdd
 from .seed_video import seed_video
 from .seed_friends import seed_friends
 from .seed_hollow import seed_hollow
+from .seed_hollow_withered_domain import seed_hollow_withered_domain
 
 def seed_all():
-    print(f"[ 000 ][ {'Прямо сейчас добавляются и проверяются данные в таблицах':<72} ]")
+    print(f"[ 000 ][ {'Прямо сейчас добавляются и проверяются данные в таблицах':<82} ]")
     seed_bangboo()
     seed_characters()
     seed_godfinger()
@@ -19,3 +20,6 @@ def seed_all():
     seed_video()
     seed_friends()
     seed_hollow()
+    seed_hollow_withered_domain()
+    
+

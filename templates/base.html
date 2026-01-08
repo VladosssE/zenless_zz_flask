@@ -23,8 +23,6 @@
 		<a class="left-panel-button" href="{{ url_for('hdd_stats.list_data') }}">
 			H.D.D. ({{ total_hdd.completed }}/{{ total_hdd.total }})
 		</a>
-
-
 		<a class="left-panel-button" href="{{ url_for('video_stats.list_data') }}">
 			Видеоархив ({{ total_video.completed }}/{{ total_video.total }})
 		</a>
@@ -33,6 +31,9 @@
 		</a>
 		<a class="left-panel-button" href="{{ url_for('hollow_stats.list_data') }}">
 			Каверна ({{ total_hollow.completed }}/{{ total_hollow.total }})
+		</a>
+		<a class="left-panel-button" href="{{ url_for('hollow_withered_domain_stats.list_data') }}">
+			Город увядания ({{ total_hollow_wd.completed }}/{{ total_hollow_wd.total }})
 		</a>
 	</div>
 	<div class="main-panel">
@@ -129,6 +130,20 @@
 						{% set count = hollow_summary[hollow] %}
 						<li class="info-list">
 							<span class="info-name">{{ hollow }}</span>
+							<span class="info-stats {% if count.completed == count.total %}completed{% endif %}">
+								{{ count.completed }} / {{ count.total }}
+							</span>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="main-card">
+				<h2 class="main-card-title">Город увядания</h2>
+				<ul class="main-card-info-list">
+					{% for hollow_wd in hollow_wd_list %}
+						{% set count = hollow_wd_summary[hollow_wd] %}
+						<li class="info-list">
+							<span class="info-name">{{ hollow_wd }}</span>
 							<span class="info-stats {% if count.completed == count.total %}completed{% endif %}">
 								{{ count.completed }} / {{ count.total }}
 							</span>

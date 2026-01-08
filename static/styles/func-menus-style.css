@@ -103,7 +103,7 @@ body{
 
 .column{
 	border: 2px dashed gray;
-	padding: 10px;
+	padding: 5px;
 }
 
 .column h3{
@@ -118,7 +118,8 @@ body{
 	padding: 8px;
 	background: white;
 	transition: 0.1s;
-	border-bottom: 1px solid gray;
+	height: 50px;
+	border: 1px dashed lightgray;
 }
 
 .column-content:hover{
@@ -146,13 +147,14 @@ body{
 
 .column-content-info strong{
 	font-weight: 400;
-	display: block;
 	font-size: 14px;
+	display: block;
 }
 
 .column-content-info small{
 	font-size: 14px;
 	color: gray;
+	display: block;
 }
 
 .column-content-btn{
@@ -163,8 +165,7 @@ body{
 
 .status{
 	font-size: 11px;
-	padding: 3px 6px;
-	border-radius: 4px;
+	padding: 10px;
 	white-space: nowrap;
 }
 
@@ -185,7 +186,7 @@ body{
 	font-size: 0.8em;
 }
 
-.column-content-count.completed,{
+.column-content-count.completed{
 	background-color: green;
 	color: white;
 }

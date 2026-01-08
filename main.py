@@ -17,6 +17,8 @@ from routes.friends_stats import bp as friends_stats_bp
 from services.friends_stats_service import FriendsService
 from routes.hollow_stats import bp as hollow_stats_bp
 from services.hollow_stats_service import HollowService
+from routes.hollow_withered_domain_stats import bp as hollow_withered_domain_stats_bp
+from services.hollow_withered_domain_stats_service import HollowWDService
 
 def create_app():
     app = Flask(__name__, template_folder="templates", static_folder="static")
@@ -38,6 +40,7 @@ def create_app():
     app.register_blueprint(video_stats_bp)
     app.register_blueprint(friends_stats_bp)
     app.register_blueprint(hollow_stats_bp)
+    app.register_blueprint(hollow_withered_domain_stats_bp)
     
     @app.route("/")
     def index():
@@ -68,6 +71,10 @@ def create_app():
         total_hollow = HollowService.total_completed()
         hollow_list = HollowService.get_all_groups()
         hollow_summary = HollowService.summary()
+
+        total_hollow_wd = HollowWDService.total_completed()
+        hollow_wd_list = HollowWDService.get_all_groups()
+        hollow_wd_summary = HollowWDService.summary()
         
         return render_template(
             "base.html",
@@ -92,6 +99,9 @@ def create_app():
             total_hollow=total_hollow,
             hollow_list=[g[0] for g in hollow_list],
             hollow_summary=hollow_summary,
+            total_hollow_wd=total_hollow_wd,
+            hollow_wd_list=[g[0] for g in hollow_wd_list],
+            hollow_wd_summary=hollow_wd_summary,
         )
 
     return app
