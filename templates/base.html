@@ -70,6 +70,12 @@
 					<span>({{ total_hollow_wd.completed }}/{{ total_hollow_wd.total }})</span>
 				</a>
 			</li>
+			<li>
+				<a href="{{ url_for('events_stats.list_data') }}">
+					События
+					<span>({{ total_events.completed }}/{{ total_events.total }})</span>
+				</a>
+			</li>
 		</div>
 	</div>
 	<div class="main-panel">
@@ -180,6 +186,20 @@
 						{% set count = hollow_wd_summary[hollow_wd] %}
 						<li class="info-list">
 							<span class="info-name">{{ hollow_wd }}</span>
+							<span class="info-stats {% if count.completed == count.total %}completed{% endif %}">
+								{{ count.completed }} / {{ count.total }}
+							</span>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="main-card">
+				<h2 class="main-card-title">События</h2>
+				<ul class="main-card-info-list">
+					{% for events in events_list %}
+						{% set count = events_summary[events] %}
+						<li class="info-list">
+							<span class="info-name">{{ events }}</span>
 							<span class="info-stats {% if count.completed == count.total %}completed{% endif %}">
 								{{ count.completed }} / {{ count.total }}
 							</span>

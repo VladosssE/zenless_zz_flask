@@ -50,7 +50,7 @@
 						<input type="hidden" name="hdd_id" value="{{ ach.hdd_id }}">
 						<button type="submit" class="column-content-btn">
 							<div class="column-content {{ 'ach-completed' if ach.hdd_status == 'Всё собрано' }}">
-								<img src="{{ url_for('static', filename='icons/' ~ ach.hdd_url) }}">
+								<img class="tiny-image" src="{{ url_for('static', filename='icons/' ~ ach.hdd_url) }}">
 								<div class="column-content-info">
 									<strong>{{ ach.hdd_dif }} / {{ ach.hdd_subname }}</strong>
 									<small>{{ ach.hdd_name }}</small>
@@ -70,7 +70,7 @@
 						<input type="hidden" name="hdd_id" value="{{ ach.hdd_id }}">
 						<button type="submit" class="column-content-btn">
 							<div class="column-content {{ 'ach-completed' if ach.hdd_status == 'Всё собрано' }}">
-								<img src="{{ url_for('static', filename='icons/' ~ ach.hdd_url) }}">
+								<img class="tiny-image" src="{{ url_for('static', filename='icons/' ~ ach.hdd_url) }}">
 								<div class="column-content-info">
 									<strong>{{ ach.hdd_subname }}</strong>
 									<small>{{ ach.hdd_name }}</small>
@@ -90,7 +90,7 @@
 						<input type="hidden" name="hdd_id" value="{{ ach.hdd_id }}">
 						<button type="submit" class="column-content-btn">
 							<div class="column-content {{ 'ach-completed' if ach.hdd_status == 'Всё собрано' }}">
-								<img src="{{ url_for('static', filename='icons/' ~ ach.hdd_url) }}">
+								<img class="tiny-image" src="{{ url_for('static', filename='icons/' ~ ach.hdd_url) }}">
 								<div class="column-content-info">
 									<strong>{{ ach.hdd_subname }}</strong>
 									<small>{{ ach.hdd_name }}</small>

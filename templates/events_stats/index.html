@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>События</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles/func-menus-style.css') }}">
+	<script src="{{ url_for('static', filename='js/events.js') }}"></script>
+</head>
+<body>
+{% set current_events = request.args.get('events') %}
+	<div class="sidebar">
+		<h2>Версии</h2>
+		<ul class="sidebar-list">
+			<li class="exit-button">
+				<a href="{{ url_for('index') }}">В главное меню</a>
+			</li>
+			<li class="complete-buttons">
+				<form method="post" action="{{ url_for('events_stats.complete_all') }}">
+					<button type="submit" class="complete-all-button">Выполнить всё</button>
+				</form>
+				<form method="post" action="{{ url_for('events_stats.disable_all') }}">
+					<button type="submit" class="complete-all-button">Провалить всё</button>
+				</form>
+				<form method="get" action="{{ url_for('events_stats.list_data') }}">
+					<button type="submit" class="complete-all-button">Вывести все записи</button>
+				</form>
+			</li>
+			{% for events in all_certain %}
+				{% set count = summary[events] %}
+					<li class="{% if events == current_events %}active{% endif %}">
+						<a href="?events={{ events }}">
+							{{ events }}
+							<span class="column-content-count {% if count.completed == count.total %}completed{% endif %}">
+								{{ count.completed }} / {{ count.total }}
+							</span>
+						</a>
+					</li>
+			{% endfor %}
+		</ul>
+	</div>
+
+	<div class="content">
+		<h1 class="main-panel-title">События</h1>
+
+		<div class="four-columns">
+			{% for ach in all_data if not current_events or ach.events_version == current_events %}
+				<div class="column">
+					<form method="post" action="{{ url_for('events_stats.update_status') }}">
+						<input type="hidden" name="events_id" value="{{ ach.events_id }}">
+						<button type="submit" class="column-content-btn">
+							<div class="column-content {{ 'ach-completed' if ach.events_status == 'Завершено' }}">
+								<div class="column-content-info">
+									<img class="big-image" src="{{ url_for('static', filename='images/events/' ~ ach.events_picture) }}">
+									<strong style="text-align: center;">{{ ach.events_name }}</strong>
+									<small style="text-align: center;">{{ ach.events_start_date  }} - {{ ach.events_end_date }}</small>
+									<p style="margin: 5px 0 0 0; text-align:center;" class="status {{ 'completed' if ach.events_status == 'Завершено' else 'not-completed' }}">
+										{{ ach.events_status }}
+									</p>
+								</div>
+								
+							</div>
+						</button>
+					</form>
+				</div>
+			{% endfor %}
+		 </div>
+	 </div>
+</body>
+</html>

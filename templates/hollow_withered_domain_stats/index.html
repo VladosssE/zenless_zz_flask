@@ -48,7 +48,7 @@
 					<input type="hidden" name="hollow_wd_id" value="{{ ach.hollow_wd_id }}">
 					<button type="submit" class="column-content-btn">
 						<div class="column-content {{ 'ach-completed' if ach.hollow_wd_status == 'Получено' }}">
-							<img src="{{ url_for('static', filename='icons/' ~ ach.hollow_wd_url) }}">
+							<img class="tiny-image" src="{{ url_for('static', filename='icons/' ~ ach.hollow_wd_url) }}">
 							<div class="column-content-info">
 								<strong>{{ ach.hollow_wd_name }}</strong>
 								<small>{{ ach.hollow_wd_desc }}</small>
@@ -67,7 +67,7 @@
 					<input type="hidden" name="hollow_wd_id" value="{{ ach.hollow_wd_id }}">
 					<button type="submit" class="column-content-btn">
 						<div class="column-content {{ 'ach-completed' if ach.hollow_wd_status == 'Получено' }}">
-							<img src="{{ url_for('static', filename='icons/' ~ ach.hollow_wd_url) }}">
+							<img class="tiny-image" src="{{ url_for('static', filename='icons/' ~ ach.hollow_wd_url) }}">
 							<div class="column-content-info">
 								<strong>{{ ach.hollow_wd_name }}</strong>
 							</div>

@@ -113,7 +113,7 @@ body{
 	padding: 8px;
 	background: white;
 	transition: 0.1s;
-	height: 50px;
+	
 	border: 1px dashed lightgray;
 }
 
@@ -128,12 +128,6 @@ body{
 
 .column-content.ach-completed small{
 	color: white;
-}
-
-.column-content img{
-	width: 32px;
-	height: 32px;
-	margin-right: 10px;
 }
 
 .column-content-info{
@@ -225,4 +219,15 @@ li.complete-buttons {
 
 li.complete-buttons form {
 	flex: 1;
+}
+
+.tiny-image{
+	width: 32px;
+	height: 32px;
+	margin-right: 10px;
+}
+
+.big-image{
+	height: auto;
+	width: 100%;
 }

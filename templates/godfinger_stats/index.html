@@ -50,7 +50,7 @@
 						<input type="hidden" name="godfinger_id" value="{{ ach.godfinger_id }}">
 						<button type="submit" class="column-content-btn">
 							<div class="column-content {{ 'ach-completed' if ach.godfinger_status == 'Выполнено' }}">
-								<img src="{{ url_for('static', filename='icons/' ~ ach.godfinger_medal_icon) }}">
+								<img class="tiny-image" src="{{ url_for('static', filename='icons/' ~ ach.godfinger_medal_icon) }}">
 								<div class="column-content-info">
 									<strong>{{ ach.godfinger_ach_name }}</strong>
 									<small>{{ ach.godfinger_ach_desc }}</small>
@@ -70,7 +70,7 @@
 						<input type="hidden" name="godfinger_id" value="{{ ach.godfinger_id }}">
 						<button type="submit" class="column-content-btn">
 							<div class="column-content {{ 'ach-completed' if ach.godfinger_status == 'Выполнено' }}">
-								<img src="{{ url_for('static', filename='icons/' ~ ach.godfinger_medal_icon) }}">
+								<img class="tiny-image" src="{{ url_for('static', filename='icons/' ~ ach.godfinger_medal_icon) }}">
 								<div class="column-content-info">
 									<strong>{{ ach.godfinger_ach_name }}</strong>
 									<small>{{ ach.godfinger_ach_desc }}</small>
@@ -90,7 +90,7 @@
 						<input type="hidden" name="godfinger_id" value="{{ ach.godfinger_id }}">
 						<button type="submit" class="column-content-btn">
 							<div class="column-content {{ 'ach-completed' if ach.godfinger_status == 'Выполнено' }}">
-								<img src="{{ url_for('static', filename='icons/' ~ ach.godfinger_medal_icon) }}">
+								<img class="tiny-image" src="{{ url_for('static', filename='icons/' ~ ach.godfinger_medal_icon) }}">
 								<div class="column-content-info">
 									<strong>{{ ach.godfinger_ach_name }}</strong>
 									<small>{{ ach.godfinger_ach_desc }}</small>
