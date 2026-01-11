@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             return res.json();
                     })
                     .then(data => {
-                            const achievement = button.querySelector(".column-content");
+                            const achievement = button.querySelector(".column-content-special");
                             const status = button.querySelector(".status");
 
                             if (!achievement || !status) return;

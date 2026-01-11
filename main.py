@@ -21,6 +21,8 @@ from routes.hollow_withered_domain_stats import bp as hollow_withered_domain_sta
 from services.hollow_withered_domain_stats_service import HollowWDService
 from routes.events_stats import bp as events_stats_bp
 from services.events_stats_service import EventsService
+from routes.hollow_lost_void_stats import bp as hollow_lost_void_stats_bp
+from services.hollow_lost_void_stats_service import Hollow_lvService
 
 def create_app():
     app = Flask(__name__, template_folder="templates", static_folder="static")
@@ -44,6 +46,7 @@ def create_app():
     app.register_blueprint(hollow_stats_bp)
     app.register_blueprint(hollow_withered_domain_stats_bp)
     app.register_blueprint(events_stats_bp)
+    app.register_blueprint(hollow_lost_void_stats_bp)
     
     @app.route("/")
     def index():
@@ -83,6 +86,10 @@ def create_app():
         events_list = EventsService.get_all_groups()
         events_summary = EventsService.summary()
 
+        total_hollow_lv = Hollow_lvService.total_completed()
+        hollow_lv_list = Hollow_lvService.get_all_groups()
+        hollow_lv_summary = Hollow_lvService.summary()
+
         return render_template(
             "base.html",
             total_stats=total_stats,
@@ -112,6 +119,9 @@ def create_app():
             total_events=total_events,
             events_list=[g[0] for g in events_list],
             events_summary=events_summary,
+            total_hollow_lv=total_hollow_lv,
+            hollow_lv_list=[g[0] for g in hollow_lv_list],
+            hollow_lv_summary=hollow_lv_summary,
         )
 
     return app

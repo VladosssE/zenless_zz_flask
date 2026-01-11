@@ -42,8 +42,8 @@
 
 	<div class="content">
 		<h1 class="main-panel-title">Город увядания</h1>
-		<div class="one-columns">
-			{% for ach in all_data if (not current_hollow_wd or ach.hollow_wd_section == current_hollow_wd) and ach.hollow_wd_desc != '-' %}
+		<div class="three-columns">
+			{% for ach in all_data if (not current_hollow_wd or ach.hollow_wd_section == current_hollow_wd)%}
 				<form method="post" action="{{ url_for('hollow_withered_domain_stats.update_status') }}">
 					<input type="hidden" name="hollow_wd_id" value="{{ ach.hollow_wd_id }}">
 					<button type="submit" class="column-content-btn">
@@ -52,24 +52,6 @@
 							<div class="column-content-info">
 								<strong>{{ ach.hollow_wd_name }}</strong>
 								<small>{{ ach.hollow_wd_desc }}</small>
-							</div>
-							<span class="status {{ 'completed' if ach.hollow_wd_status == 'Получено' else 'not-completed' }}">
-								{{ ach.hollow_wd_status }}
-							</span>
-						</div>
-					</button>
-				</form>
-			{% endfor %}
-		</div>
-		<div class="three-columns">
-			{% for ach in all_data if (not current_hollow_wd or ach.hollow_wd_section == current_hollow_wd) and ach.hollow_wd_desc == '-' %}
-				<form method="post" action="{{ url_for('hollow_withered_domain_stats.update_status') }}">
-					<input type="hidden" name="hollow_wd_id" value="{{ ach.hollow_wd_id }}">
-					<button type="submit" class="column-content-btn">
-						<div class="column-content {{ 'ach-completed' if ach.hollow_wd_status == 'Получено' }}">
-							<img class="tiny-image" src="{{ url_for('static', filename='icons/' ~ ach.hollow_wd_url) }}">
-							<div class="column-content-info">
-								<strong>{{ ach.hollow_wd_name }}</strong>
 							</div>
 							<span class="status {{ 'completed' if ach.hollow_wd_status == 'Получено' else 'not-completed' }}">
 								{{ ach.hollow_wd_status }}

@@ -49,7 +49,7 @@
 					<form method="post" action="{{ url_for('events_stats.update_status') }}">
 						<input type="hidden" name="events_id" value="{{ ach.events_id }}">
 						<button type="submit" class="column-content-btn">
-							<div class="column-content {{ 'ach-completed' if ach.events_status == 'Завершено' }}">
+							<div class="column-content-special {{ 'ach-completed' if ach.events_status == 'Завершено' }}">
 								<div class="column-content-info">
 									<img class="big-image" src="{{ url_for('static', filename='images/events/' ~ ach.events_picture) }}">
 									<strong style="text-align: center;">{{ ach.events_name }}</strong>

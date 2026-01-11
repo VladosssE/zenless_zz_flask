@@ -113,7 +113,7 @@ body{
 	padding: 8px;
 	background: white;
 	transition: 0.1s;
-	
+	height: 40px;
 	border: 1px dashed lightgray;
 }
 
@@ -127,6 +127,28 @@ body{
 }
 
 .column-content.ach-completed small{
+	color: white;
+}
+
+.column-content-special{
+	display: flex;
+	align-items: center;
+	padding: 8px;
+	background: white;
+	transition: 0.1s;
+	border: 1px dashed lightgray;
+}
+
+.column-content-special:hover{
+	background: yellow;
+}
+
+.column-content-special.ach-completed{
+	background: green;
+	color: white;
+}
+
+.column-content-special.ach-completed small{
 	color: white;
 }
 

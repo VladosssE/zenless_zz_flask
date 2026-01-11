@@ -9,6 +9,7 @@ from .seed_friends import seed_friends
 from .seed_hollow import seed_hollow
 from .seed_hollow_withered_domain import seed_hollow_withered_domain
 from .seed_events import seed_events
+from .seed_hollow_lost_void import seed_hollow_lost_void
 
 def seed_all():
     print(f"[ 000 ][ {'Прямо сейчас добавляются и проверяются данные в таблицах':<82} ]")
@@ -23,5 +24,5 @@ def seed_all():
     seed_hollow()
     seed_hollow_withered_domain()
     seed_events()
-    
+    seed_hollow_lost_void()
 

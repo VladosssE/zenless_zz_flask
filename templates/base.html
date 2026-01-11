@@ -11,6 +11,12 @@
 		<h1 class="left-panel-title">Общее</h1>
 		<div class="left-panel-list">
 			<li>
+				<a href="{{ url_for('events_stats.list_data') }}">
+					События
+					<span>({{ total_events.completed }}/{{ total_events.total }})</span>
+				</a>
+			</li>
+			<li>
 				<a href="{{ url_for('bangboo_stats.list_bangboo') }}">
 					Банбу 
 					<span>(WIP)</span>
@@ -71,9 +77,9 @@
 				</a>
 			</li>
 			<li>
-				<a href="{{ url_for('events_stats.list_data') }}">
-					События
-					<span>({{ total_events.completed }}/{{ total_events.total }})</span>
+				<a href="{{ url_for('hollow_lost_void_stats.list_data') }}">
+					Затерянная бездна
+					<span>({{ total_hollow_lv.completed }}/{{ total_hollow_lv.total }})</span>
 				</a>
 			</li>
 		</div>
@@ -81,6 +87,20 @@
 	<div class="main-panel">
 		<h1 class="main-panel-title">Статистика</h1>
 		<div class="main-container">
+			<div class="main-card">
+				<h2 class="main-card-title">События</h2>
+				<ul class="main-card-info-list">
+					{% for events in events_list %}
+						{% set count = events_summary[events] %}
+						<li class="info-list">
+							<span class="info-name">{{ events }}</span>
+							<span class="info-stats {% if count.completed == count.total %}completed{% endif %}">
+								{{ count.completed }} / {{ count.total }}
+							</span>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
 			<div class="main-card">
 				<h2 class="main-card-title">Годфингер</h2>
 				<ul class="main-card-info-list">
@@ -193,13 +213,14 @@
 					{% endfor %}
 				</ul>
 			</div>
+
 			<div class="main-card">
-				<h2 class="main-card-title">События</h2>
+				<h2 class="main-card-title">Затерянная бездна</h2>
 				<ul class="main-card-info-list">
-					{% for events in events_list %}
-						{% set count = events_summary[events] %}
+					{% for hollow_lv in hollow_lv_list %}
+						{% set count = hollow_lv_summary[hollow_lv] %}
 						<li class="info-list">
-							<span class="info-name">{{ events }}</span>
+							<span class="info-name">{{ hollow_lv }}</span>
 							<span class="info-stats {% if count.completed == count.total %}completed{% endif %}">
 								{{ count.completed }} / {{ count.total }}
 							</span>
