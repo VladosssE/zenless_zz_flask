@@ -23,6 +23,7 @@
 					<button type="submit" class="complete-all-button">Провалить всё</button>
 				</form>
 				<form method="get" action="{{ url_for('events_stats.list_data') }}">
+					<input type="hidden" name="events" value="all">
 					<button type="submit" class="complete-all-button">Вывести все записи</button>
 				</form>
 			</li>
@@ -42,29 +43,35 @@
 
 	<div class="content">
 		<h1 class="main-panel-title">События</h1>
-
-		<div class="four-columns">
-			{% for ach in all_data if not current_events or ach.events_version == current_events %}
-				<div class="column">
-					<form method="post" action="{{ url_for('events_stats.update_status') }}">
-						<input type="hidden" name="events_id" value="{{ ach.events_id }}">
-						<button type="submit" class="column-content-btn">
-							<div class="column-content-special {{ 'ach-completed' if ach.events_status == 'Завершено' }}">
-								<div class="column-content-info">
-									<img class="big-image" src="{{ url_for('static', filename='images/events/' ~ ach.events_picture) }}">
-									<strong style="text-align: center;">{{ ach.events_name }}</strong>
-									<small style="text-align: center;">{{ ach.events_start_date  }} - {{ ach.events_end_date }}</small>
-									<p style="margin: 5px 0 0 0; text-align:center;" class="status {{ 'completed' if ach.events_status == 'Завершено' else 'not-completed' }}">
-										{{ ach.events_status }}
-									</p>
+		{% if current_events %}
+			<div class="four-columns">
+				{% for ach in all_data if current_events == 'all' or ach.events_version == current_events %}
+					<div class="column">
+						<form method="post" action="{{ url_for('events_stats.update_status') }}">
+							<input type="hidden" name="events_id" value="{{ ach.events_id }}">
+							<button type="submit" class="column-content-btn">
+								<div class="column-content-special {{ 'ach-completed' if ach.events_status == 'Завершено' }}">
+									<div class="column-content-info">
+										<img class="big-image" src="{{ url_for('static', filename='images/events/' ~ ach.events_picture) }}">
+										<strong style="text-align: center;">{{ ach.events_name }}</strong>
+										<small style="text-align: center;">{{ ach.events_start_date }} - {{ ach.events_end_date }}</small>
+										<p class="status {{ 'completed' if ach.events_status == 'Завершено' else 'not-completed' }}"
+								 			style="margin: 5px 0 0 0; text-align:center;">
+											{{ ach.events_status }}
+										</p>
+									</div>
 								</div>
-								
-							</div>
-						</button>
-					</form>
-				</div>
-			{% endfor %}
-		 </div>
+							</button>
+						</form>
+					</div>
+				{% endfor %}
+			</div>
+		{% else %}
+			<div class="empty-message">
+				<h2>Внимание!</h2>
+				<p>Будьте осторожны, когда нажимаете на "Вывести все записи", так как каждое событие содержит по одному изображению и каждое из них будет обрабатываться.</p>
+			</div>
+		{% endif %}
 	 </div>
 </body>
 </html>

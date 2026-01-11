@@ -17,7 +17,7 @@ body{
 }
 
 .left-panel{
-	width: 25%;
+	width: 20%;
 	background: white;
 	padding: 20px;
 	overflow-y: auto;
@@ -48,7 +48,8 @@ body{
 
 .left-panel-title{
 	text-align: center;
-	margin-top: 0;
+	padding: 10px;
+	margin: 0;
 }
 
 .left-panel-sec-title{
@@ -63,7 +64,7 @@ body{
 }
 
 .main-panel{
-	width: 85%;
+	width: 80%;
 	background: white;
 	display: flex;
 	flex-direction: column;
@@ -75,8 +76,8 @@ body{
 
 .main-panel-title{
 	font-size: 30px;
-	margin: 20px 0 0 0;
-	padding-bottom: 10px;
+	margin: 0;
+	padding: 15px;
 	text-align: center;
 	font-family: mr_norwesterG, Courier;
 	color: black;
@@ -86,7 +87,6 @@ body{
 	padding: 5px;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	gap: 5px;
 }
 
 .main-card{
@@ -112,7 +112,7 @@ body{
 	display: flex;
 	justify-content: space-between;
 	padding: 5px;
-	border-bottom: 1px dashed gray;
+	/*border-bottom: 1px dashed gray;*/
 	transition: 0.2s;
 }
 
@@ -129,7 +129,7 @@ body{
 .info-stats{
 	padding: 5px;
 	color: white;
-	min-width: 60px;
+	min-width: 100px;
 	text-align: center;
 	background: red;
 }
