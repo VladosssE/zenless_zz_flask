@@ -7,38 +7,24 @@
 	<link rel="stylesheet" href="{{ url_for('static', filename='styles/mainmenu-style.css') }}">
 </head>
 <body>
-	<div class="left-panel">
-		<h1 class="left-panel-title">Общее</h1>
-		<div class="left-panel-list">
+	<div class="main-panel">
+		<h1 class="main-panel-title">Главное меню</h1>
+		<ul class="main-panel-list">
 			{% for key, section in sections.items() %}
 				<li>
-					<a href="{{ url_for(section.endpoint) }}">
-						{{ section.title }}
-						<span>({{ section.total.completed }}/{{ section.total.total }})</span>
+					<a href="{{ url_for(section.endpoint) }}" class="progress-item">
+						<span class="progress-title">{{ section.title }}</span>
+						<div class="progress-bar">
+							<div class="progress-fill {% if section.total.completed == section.total.total %}completed{% endif %}" 
+								style="width: {{ (section.total.completed / section.total.total * 100)|round(0) }}%;">
+							</div>
+						</div>
+						<span class="progress-numbers">
+							{{ section.total.completed }}/{{ section.total.total }}
+						</span>
 					</a>
 				</li>
 			{% endfor %}
-		</div>
-	</div>
-	<div class="main-panel">
-		<h1 class="main-panel-title">Статистика</h1>
-		<div class="main-container">
-			{% for key, section in sections.items() %}
-				<div class="main-card">
-					<h2 class="main-card-title">{{ section.title }}</h2>
-					<ul class="main-card-info-list">
-						{% for item in section.list %}
-							{% set count = section.summary[item] %}
-							<li class="info-list">
-								<span class="info-name">{{ item }}</span>
-								<span class="info-stats {% if count.completed == count.total %}completed{% endif %}">
-									{{ count.completed }} / {{ count.total }}
-								</span>
-							</li>
-						{% endfor %}
-					</ul>
-				</div>
-			{% endfor %}
-		</div>
+		</ul>
 	</div>
 </body>
