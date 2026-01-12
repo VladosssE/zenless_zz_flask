@@ -10,224 +10,35 @@
 	<div class="left-panel">
 		<h1 class="left-panel-title">Общее</h1>
 		<div class="left-panel-list">
-			<li>
-				<a href="{{ url_for('events_stats.list_data') }}">
-					События
-					<span>({{ total_events.completed }}/{{ total_events.total }})</span>
-				</a>
-			</li>
-			<li>
-				<a href="{{ url_for('friends_stats.list_data') }}">
-					Партнёры
-					<span>({{ total_friends.completed }}/{{ total_friends.total }})</span>
-				</a>
-			</li>
-			<li>
-				<a href="{{ url_for('bangboo_stats.list_bangboo') }}">
-					Банбу 
-					<span>(WIP)</span>
-				</a>
-			</li>
-			<li>
-				<a href="{{ url_for('characters_stats.list_characters') }}">
-					Персонажи 
-					<span>(WIP)</span>
-				</a>
-			</li>
-			<li>
-				<a href="{{ url_for('godfinger_stats.list_data') }}">
-					Годфингер
-					<span>({{ total_stats.completed }}/{{ total_stats.total }})</span>
-				</a>
-			</li>
-			<li>
-				<a href="{{ url_for('mewmew_stats.list_data') }}">
-					Инспектор Мяучело
-					<span>({{ total_mewmew.completed }}/{{ total_mewmew.total }})</span>
-				</a>
-			</li>
-			<li>
-				<a href="{{ url_for('sage_stats.list_data') }}">
-					Мудрец в бочке
-					<span>({{ total_sage.completed }}/{{ total_sage.total }})</span>
-				</a>
-			</li>
-			<li>
-				<a href="{{ url_for('hdd_stats.list_data') }}">
-					H.D.D.
-					<span>({{ total_hdd.completed }}/{{ total_hdd.total }})</span>
-				</a>
-			</li>
-			<li>
-				<a href="{{ url_for('video_stats.list_data') }}">
-					Видеоархив
-					<span>({{ total_video.completed }}/{{ total_video.total }})</span>
-				</a>
-			</li>
-			<li>
-				<a href="{{ url_for('hollow_stats.list_data') }}">
-					Каверна
-					<span>({{ total_hollow.completed }}/{{ total_hollow.total }})</span>
-				</a>
-			</li>
-			<li>
-				<a href="{{ url_for('hollow_withered_domain_stats.list_data') }}">
-					Город увядания
-					<span>({{ total_hollow_wd.completed }}/{{ total_hollow_wd.total }})</span>
-				</a>
-			</li>
-			<li>
-				<a href="{{ url_for('hollow_lost_void_stats.list_data') }}">
-					Затерянная бездна
-					<span>({{ total_hollow_lv.completed }}/{{ total_hollow_lv.total }})</span>
-				</a>
-			</li>
+			{% for key, section in sections.items() %}
+				<li>
+					<a href="{{ url_for(section.endpoint) }}">
+						{{ section.title }}
+						<span>({{ section.total.completed }}/{{ section.total.total }})</span>
+					</a>
+				</li>
+			{% endfor %}
 		</div>
 	</div>
 	<div class="main-panel">
 		<h1 class="main-panel-title">Статистика</h1>
 		<div class="main-container">
-			<div class="main-card">
-				<h2 class="main-card-title">События</h2>
-				<ul class="main-card-info-list">
-					{% for events in events_list %}
-						{% set count = events_summary[events] %}
-						<li class="info-list">
-							<span class="info-name">{{ events }}</span>
-							<span class="info-stats {% if count.completed == count.total %}completed{% endif %}">
-								{{ count.completed }} / {{ count.total }}
-							</span>
-						</li>
-					{% endfor %}
-				</ul>
-			</div>
-			<div class="main-card">
-				<h2 class="main-card-title">Партнёры</h2>
-				<ul class="main-card-info-list">
-					{% for friends in friends_list %}
-						{% set count = friends_summary[friends] %}
-						<li class="info-list">
-							<span class="info-name">{{ friends }}</span>
-							<span class="info-stats {% if count.completed == count.total %}completed{% endif %}">
-								{{ count.completed }} / {{ count.total }}
-							</span>
-						</li>
-					{% endfor %}
-				</ul>
-			</div>
-			<div class="main-card">
-				<h2 class="main-card-title">Годфингер</h2>
-				<ul class="main-card-info-list">
-					{% for game in games_list %}
-						{% set count = summary[game] %}
-						<li class="info-list">
-							<span class="info-name">{{ game }}</span>
-							<span class="info-stats {% if count.completed == count.total %}completed{% endif %}">
-								{{ count.completed }} / {{ count.total }}
-							</span>
-						</li>
-					{% endfor %}
-				</ul>
-			</div>
-			<div class="main-card">
-				<h2 class="main-card-title">Инспектор Мяучело</h2>
-				<ul class="main-card-info-list">
-					{% for mew in mewmew_list %}
-						{% set count = mewmew_summary[mew] %}
-						<li class="info-list">
-							<span class="info-name">{{ mew }}</span>
-							<span class="info-stats {% if count.completed == count.total %}completed{% endif %}">
-								{{ count.completed }} / {{ count.total }}
-							</span>
-						</li>
-					{% endfor %}
-				</ul>
-			</div>
-			<div class="main-card">
-				<h2 class="main-card-title">Мудрец в бочке</h2>
-				<ul class="main-card-info-list">
-					{% for sage in sage_list %}
-						{% set count = sage_summary[sage] %}
-						<li class="info-list">
-							<span class="info-name">{{ sage }}</span>
-							<span class="info-stats {% if count.completed == count.total %}completed{% endif %}">
-								{{ count.completed }} / {{ count.total }}
-							</span>
-						</li>
-					{% endfor %}
-				</ul>
-			</div>
-			<div class="main-card">
-				<h2 class="main-card-title">H.D.D.</h2>
-				<ul class="main-card-info-list">
-					{% for hdd in hdd_list %}
-						{% set count = hdd_summary[hdd] %}
-						<li class="info-list">
-							<span class="info-name">{{ hdd }}</span>
-							<span class="info-stats {% if count.completed == count.total %}completed{% endif %}">
-								{{ count.completed }} / {{ count.total }}
-							</span>
-						</li>
-					{% endfor %}
-				</ul>
-			</div>
-			<div class="main-card">
-				<h2 class="main-card-title">Видеоархив</h2>
-				<ul class="main-card-info-list">
-					{% for video in video_list %}
-						{% set count = video_summary[video] %}
-						<li class="info-list">
-							<span class="info-name">{{ video }}</span>
-							<span class="info-stats {% if count.completed == count.total %}completed{% endif %}">
-								{{ count.completed }} / {{ count.total }}
-							</span>
-						</li>
-					{% endfor %}
-				</ul>
-			</div>
-			<div class="main-card">
-				<h2 class="main-card-title">Каверна</h2>
-				<ul class="main-card-info-list">
-					{% for hollow in hollow_list %}
-						{% set count = hollow_summary[hollow] %}
-						<li class="info-list">
-							<span class="info-name">{{ hollow }}</span>
-							<span class="info-stats {% if count.completed == count.total %}completed{% endif %}">
-								{{ count.completed }} / {{ count.total }}
-							</span>
-						</li>
-					{% endfor %}
-				</ul>
-			</div>
-			<div class="main-card">
-				<h2 class="main-card-title">Город увядания</h2>
-				<ul class="main-card-info-list">
-					{% for hollow_wd in hollow_wd_list %}
-						{% set count = hollow_wd_summary[hollow_wd] %}
-						<li class="info-list">
-							<span class="info-name">{{ hollow_wd }}</span>
-							<span class="info-stats {% if count.completed == count.total %}completed{% endif %}">
-								{{ count.completed }} / {{ count.total }}
-							</span>
-						</li>
-					{% endfor %}
-				</ul>
-			</div>
-
-			<div class="main-card">
-				<h2 class="main-card-title">Затерянная бездна</h2>
-				<ul class="main-card-info-list">
-					{% for hollow_lv in hollow_lv_list %}
-						{% set count = hollow_lv_summary[hollow_lv] %}
-						<li class="info-list">
-							<span class="info-name">{{ hollow_lv }}</span>
-							<span class="info-stats {% if count.completed == count.total %}completed{% endif %}">
-								{{ count.completed }} / {{ count.total }}
-							</span>
-						</li>
-					{% endfor %}
-				</ul>
-			</div>
+			{% for key, section in sections.items() %}
+				<div class="main-card">
+					<h2 class="main-card-title">{{ section.title }}</h2>
+					<ul class="main-card-info-list">
+						{% for item in section.list %}
+							{% set count = section.summary[item] %}
+							<li class="info-list">
+								<span class="info-name">{{ item }}</span>
+								<span class="info-stats {% if count.completed == count.total %}completed{% endif %}">
+									{{ count.completed }} / {{ count.total }}
+								</span>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			{% endfor %}
 		</div>
 	</div>
 </body>

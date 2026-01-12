@@ -10,6 +10,9 @@ from .seed_hollow import seed_hollow
 from .seed_hollow_withered_domain import seed_hollow_withered_domain
 from .seed_events import seed_events
 from .seed_hollow_lost_void import seed_hollow_lost_void
+from .seed_cheesetopia import seed_cheesetopia
+from .seed_starhour import seed_starhour
+from .seed_voidroad import seed_voidroad
 
 def seed_all():
     print(f"[ 000 ][ {'Прямо сейчас добавляются и проверяются данные в таблицах':<82} ]")
@@ -25,4 +28,6 @@ def seed_all():
     seed_hollow_withered_domain()
     seed_events()
     seed_hollow_lost_void()
-
+    seed_cheesetopia()
+    seed_starhour()
+    seed_voidroad()
