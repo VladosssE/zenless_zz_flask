@@ -13,7 +13,9 @@ from routes.hollow_lost_void_stats import bp as hollow_lost_void_stats_bp
 from routes.cheesetopia_stats import bp as cheesetopia_stats_bp
 from routes.starhour_stats import bp as starhour_stats_bp
 from routes.voidroad_stats import bp as voidroad_stats_bp
-
+from routes.fishing_stats import bp as fishing_stats_bp
+from routes.flowers_stats import bp as flowers_stats_bp
+from routes.gravity_stats import bp as gravity_stats_bp
 
 BLUEPRINTS = [
     bangboo_stats_bp,
@@ -31,4 +33,7 @@ BLUEPRINTS = [
     cheesetopia_stats_bp,
     starhour_stats_bp,
     voidroad_stats_bp,
+    fishing_stats_bp,
+    flowers_stats_bp,
+    gravity_stats_bp
 ]

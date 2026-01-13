@@ -1,0 +1,1 @@
+from extensions import dbclass Fishing_stats(db.Model):    __tablename__ = 'fishing_stats_zzz'    fishing_id = db.Column(db.Integer, primary_key=True)    fishing_section = db.Column(db.String(20))    fishing_name = db.Column(db.String(25))    fishing_status = db.Column(db.String(12))

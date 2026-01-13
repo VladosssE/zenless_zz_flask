@@ -1,0 +1,1 @@
+from extensions import dbclass Flowers_stats(db.Model):    __tablename__ = 'flowers_stats_zzz'    flowers_id = db.Column(db.Integer, primary_key=True)    flowers_section = db.Column(db.String(20))    flowers_name = db.Column(db.String(25))    flowers_status = db.Column(db.String(12))

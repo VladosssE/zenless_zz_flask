@@ -13,7 +13,9 @@ from .seed_hollow_lost_void import seed_hollow_lost_void
 from .seed_cheesetopia import seed_cheesetopia
 from .seed_starhour import seed_starhour
 from .seed_voidroad import seed_voidroad
-
+from .seed_fishing import seed_fishing
+from .seed_flowers import seed_flowers
+from .seed_gravity import seed_gravity
 def seed_all():
     print(f"[ 000 ][ {'Прямо сейчас добавляются и проверяются данные в таблицах':<82} ]")
     seed_bangboo()
@@ -31,3 +33,6 @@ def seed_all():
     seed_cheesetopia()
     seed_starhour()
     seed_voidroad()
+    seed_fishing()
+    seed_flowers()
+    seed_gravity()

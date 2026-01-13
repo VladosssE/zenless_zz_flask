@@ -1,0 +1,1 @@
+from extensions import dbclass Gravity_stats(db.Model):    __tablename__ = 'gravity_stats_zzz'    gravity_id = db.Column(db.Integer, primary_key=True)    gravity_section = db.Column(db.String(20))    gravity_name = db.Column(db.String(25))    gravity_status = db.Column(db.String(12))

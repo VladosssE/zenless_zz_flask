@@ -10,6 +10,9 @@ from services.hollow_lost_void_stats_service import Hollow_lvService
 from services.cheesetopia_stats_service import CheesetopiaService
 from services.starhour_stats_service import StarhourService
 from services.voidroad_stats_service import VoidroadService
+from services.fishing_stats_service import FishingService
+from services.flowers_stats_service import FlowersService
+from services.gravity_stats_service import GravityService
 
 SECTIONS = {
     "events": {
@@ -71,5 +74,20 @@ SECTIONS = {
         "title": "Дорога в пустоту",
         "service": VoidroadService,
         "endpoint": "voidroad_stats.list_data",
+    },
+    "fishing": {
+        "title": "Ультимативный удильщик в Элписе",
+        "service": FishingService,
+        "endpoint": "fishing_stats.list_data",
+    },
+    "flowers": {
+    "title": "О сокровенном на языке цветов",
+    "service": FlowersService,
+    "endpoint": "flowers_stats.list_data",
+    },
+    "gravity": {
+    "title": "Сила притяжения",
+    "service": GravityService,
+    "endpoint": "gravity_stats.list_data",
     },
 }
