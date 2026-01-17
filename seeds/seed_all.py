@@ -16,6 +16,10 @@ from .seed_voidroad import seed_voidroad
 from .seed_fishing import seed_fishing
 from .seed_flowers import seed_flowers
 from .seed_gravity import seed_gravity
+from .seed_sword import seed_sword
+from .seed_summer import seed_summer
+from .seed_dream import seed_dream
+
 def seed_all():
     print(f"[ 000 ][ {'Прямо сейчас добавляются и проверяются данные в таблицах':<82} ]")
     seed_bangboo()
@@ -36,3 +40,6 @@ def seed_all():
     seed_fishing()
     seed_flowers()
     seed_gravity()
+    seed_sword() 
+    seed_summer() 
+    seed_dream()

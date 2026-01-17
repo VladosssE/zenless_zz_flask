@@ -16,6 +16,9 @@ from routes.voidroad_stats import bp as voidroad_stats_bp
 from routes.fishing_stats import bp as fishing_stats_bp
 from routes.flowers_stats import bp as flowers_stats_bp
 from routes.gravity_stats import bp as gravity_stats_bp
+from routes.sword_stats import bp as sword_stats_bp
+from routes.summer_stats import bp as summer_stats_bp
+from routes.dream_stats import bp as dream_stats_bp
 
 BLUEPRINTS = [
     bangboo_stats_bp,
@@ -35,5 +38,8 @@ BLUEPRINTS = [
     voidroad_stats_bp,
     fishing_stats_bp,
     flowers_stats_bp,
-    gravity_stats_bp
+    gravity_stats_bp,
+    sword_stats_bp, 
+    summer_stats_bp, 
+    dream_stats_bp
 ]

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Неоконченный сон</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles/func-menus-style.css') }}">
+	<script src="{{ url_for('static', filename='js/dream.js') }}"></script>
+</head>
+<body>
+	{% set current_dream = request.args.get('dream') %}
+	<div class="sidebar">
+		<h2>Разделы</h2>
+		<ul class="sidebar-list">
+			<li class="exit-button">
+				<a href="{{ url_for('index') }}">В главное меню</a>
+			</li>
+			<li class="complete-buttons">
+				<form method="post" action="{{ url_for('dream_stats.complete_all') }}">
+					<button type="submit" class="complete-all-button">Выполнить всё</button>
+				</form>
+				<form method="post" action="{{ url_for('dream_stats.disable_all') }}">
+					<button type="submit" class="complete-all-button">Провалить всё</button>
+				</form>
+				<form method="get" action="{{ url_for('dream_stats.list_data') }}">
+					<button type="submit" class="complete-all-button">Вывести все записи</button>
+				</form>
+			</li>
+			{% for dream in all_certain %}
+				{% set count = summary[dream] %}
+				<li class="{% if dream == current_dream %}active{% endif %}">
+					<a href="?dream={{ dream }}">
+						{{ dream }}
+						<span class="column-content-count {% if count.completed == count.total %}completed{% endif %}">
+							{{ count.completed }} / {{ count.total }}
+						</span>
+					</a>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+
+	<div class="content">
+		<h1 class="main-panel-title">Неоконченный сон</h1>
+		<div class="one-columns">
+			{% for ach in all_data if not current_dream or ach.dream_section == current_dream %}
+				<form method="post" action="{{ url_for('dream_stats.update_status') }}">
+					<input type="hidden" name="dream_id" value="{{ ach.dream_id }}">
+					<button type="submit" class="column-content-btn">
+						<div class="column-content {{ 'ach-completed' if ach.dream_status == 'Выполнено' }}">
+							<div class="column-content-info">
+								<strong>{{ ach.dream_name }}</strong>
+							</div>
+							<span class="status {{ 'completed' if ach.summer_status == 'Выполнено' else 'not-completed' }}">
+								{{ ach.dream_status }}
+							</span>
+						</div>
+					</button>
+				</form>
+			{% endfor %}
+		</div>
+	</div>
+</body>
+</html>

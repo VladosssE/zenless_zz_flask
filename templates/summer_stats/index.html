@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Летняя фантазия</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles/func-menus-style.css') }}">
+	<script src="{{ url_for('static', filename='js/summer.js') }}"></script>
+</head>
+<body>
+	{% set current_summer = request.args.get('summer') %}
+	<div class="sidebar">
+		<h2>Разделы</h2>
+		<ul class="sidebar-list">
+			<li class="exit-button">
+				<a href="{{ url_for('index') }}">В главное меню</a>
+			</li>
+			<li class="complete-buttons">
+				<form method="post" action="{{ url_for('summer_stats.complete_all') }}">
+					<button type="submit" class="complete-all-button">Выполнить всё</button>
+				</form>
+				<form method="post" action="{{ url_for('summer_stats.disable_all') }}">
+					<button type="submit" class="complete-all-button">Провалить всё</button>
+				</form>
+				<form method="get" action="{{ url_for('summer_stats.list_data') }}">
+					<button type="submit" class="complete-all-button">Вывести все записи</button>
+				</form>
+			</li>
+			{% for summer in all_certain %}
+				{% set count = summary[summer] %}
+				<li class="{% if summer == current_summer %}active{% endif %}">
+					<a href="?summer={{ summer }}">
+						{{ summer }}
+						<span class="column-content-count {% if count.completed == count.total %}completed{% endif %}">
+							{{ count.completed }} / {{ count.total }}
+						</span>
+					</a>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+
+	<div class="content">
+		<h1 class="main-panel-title">Летняя фантазия</h1>
+		<div class="one-columns">
+			{% for ach in all_data if not current_summer or ach.summer_section == current_summer %}
+				<form method="post" action="{{ url_for('summer_stats.update_status') }}">
+					<input type="hidden" name="summer_id" value="{{ ach.summer_id }}">
+					<button type="submit" class="column-content-btn">
+						<div class="column-content {{ 'ach-completed' if ach.summer_status == 'Выполнено' }}">
+							<div class="column-content-info">
+								<strong>{{ ach.summer_name }}</strong>
+							</div>
+							<span class="status {{ 'completed' if ach.summer_status == 'Выполнено' else 'not-completed' }}">
+								{{ ach.summer_status }}
+							</span>
+						</div>
+					</button>
+				</form>
+			{% endfor %}
+		</div>
+	</div>
+</body>
+</html>

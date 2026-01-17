@@ -13,6 +13,9 @@ from services.voidroad_stats_service import VoidroadService
 from services.fishing_stats_service import FishingService
 from services.flowers_stats_service import FlowersService
 from services.gravity_stats_service import GravityService
+from services.sword_stats_service import SwordService
+from services.summer_stats_service import SummerService
+from services.dream_stats_service import DreamService
 
 SECTIONS = {
     "events": {
@@ -89,5 +92,20 @@ SECTIONS = {
     "title": "Сила притяжения",
     "service": GravityService,
     "endpoint": "gravity_stats.list_data",
+    },
+    "sword": {
+    "title": "Запретный край Небесного меча",
+    "service": SwordService,
+    "endpoint": "sword_stats.list_data",
+    },
+    "summer": {
+    "title": "Летняя фантазия",
+    "service": SummerService,
+    "endpoint": "summer_stats.list_data",
+    },
+    "dream": {
+    "title": "Неоконченный сон",
+    "service": DreamService,
+    "endpoint": "dream_stats.list_data",
     },
 }
